@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/reset.css">
+    <title>Cadastro candidato</title>
+</head>
+<body>
+    <form id="registration-candidate">
+        <uL>
+            <li>
+                <label for="candidate-name">Nome:</label>
+                <input type="text" id="candidate-name" required>
+            </li>
+            <li>
+                <label for="candidate-email">E-mail:</label>
+                <input type="email" id="candidate-email" required>
+            </li>
+            <li>
+                <label for="candidate-password">Senha:</label>
+                <input type="password" id="candidate-password" required>
+            </li>
+            <li>
+                <label for="candidate-formation">Formação:</label>
+                <input type="text" id="candidate-formation" required>
+            </li>
+            <li>
+                <fieldset>
+                    <legend>Skills</legend>
+                    <div>
+                        <label for="candidate-java">Java</label>
+                        <input type="checkbox" id="candidate-java" value="Java" />
+                    </div>
+                    <div>
+                        <label for="candidate-node">Node</label>
+                        <input type="checkbox" id="candidate-node" value="Node" />
+                    </div>
+                    <div>
+                        <label for="candidate-angular">Angular</label>
+                        <input type="checkbox" id="candidate-angular" value="Angular" />
+                    </div>
+                    <div>
+                        <label for="candidate-groovy">Groovy</label>
+                        <input type="checkbox" id="candidate-groovy" value="Groovy" />
+                    </div>
+                    <div>
+                        <label for="candidate-postgreSQL">PostgreSQL</label>
+                        <input type="checkbox" id="candidate-postgreSQL" value="PostgreSQL" />
+                    </div>
+                    <div>
+                        <label for="candidate-javascript">JavaScript</label>
+                        <input type="checkbox" id="candidate-javascript" value="JavaScript" />
+                    </div>
+                    <div>
+                        <label for="candidate-typescript">TypeScript</label>
+                        <input type="checkbox" id="candidate-typescript" value="TypeScript" />
+                    </div>
+                  </fieldset>
+            </li>
+            <li>
+                <input type="submit" value="Cadastrar">
+            </li>
+        </uL>
+    </form>
+    <script src="../app.min.js"></script>
+</body>
+</html>
