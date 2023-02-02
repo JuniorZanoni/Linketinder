@@ -11,6 +11,10 @@ const inputName: HTMLElement | null = document.getElementById("candidate-name")
 inputName?.addEventListener("change", (event) => {
     const element = event.currentTarget as HTMLInputElement
     nameCandidate = element.value
+
+    if(!validaNome(nameCandidate)) {
+        alert("Nome inválido")
+    }
 })
 
 const inputEmail: HTMLElement | null = document.getElementById("candidate-email")
@@ -45,6 +49,54 @@ skillsDefault.forEach((skill) => {
 })
 
 const form: HTMLElement | null = document.getElementById("registration-candidate")
+
+function validaCadastro(candidato: CandidatoUsuario): boolean {
+    if(
+        validaNome(candidato.name) &&
+        validaEmail(candidato.email) &&
+        validaFormacao(candidato.formation) &&
+        validaSenha(candidato.password) &&
+        validaSkills(candidato.skills) 
+    ) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function validaNome(nome: string): boolean {
+    const regex = /[A-Z][a-záàâãéèêíïóôõöúçñ]+/
+    const nomes = nome.split(" ")
+    let validado = true
+    nomes.forEach((e) => {
+        if(!regex.test(e)) {
+            validado = false
+        }
+    })
+    return validado
+}
+
+function validaEmail(email: string): boolean {
+    const regex = /\b\S+@\w+.\w{2,6}(\.\w{2})?\b/g
+    return regex.test(email)
+}
+
+function validaFormacao(formacao: string): boolean {
+    const regex = /[A-Za-záàâãéèêíïóôõöúçñ]+/
+    return regex.test(formacao)
+}
+
+function validaSenha(senha: string): boolean {
+    const regex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%!^&*]).{6,20}$/gm
+    return regex.test(senha)
+}
+
+function validaSkills(skills: string[]): boolean {
+    const regex = /\bJava\b|\bAngular\b|\bPostgreSQL\b|\bJavaScript\b|\bGroovy\b|\bNode\b|\bTypeScript\b/
+    let validacao = true
+    skills.forEach((e) => regex.test(e) ? null : validacao = false)
+    return validacao
+}
 
 form?.addEventListener("submit", (event) => {
     event.preventDefault()
