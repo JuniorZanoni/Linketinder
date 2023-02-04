@@ -25,7 +25,7 @@ interesse.
 - `Match`: No banco de dados, existe uma tabela chamada "matchs", onde será armazenada a lista de curtidas mútuas. A lógica por trás dessa tabela será, o candidato X curti a vaga Y, nesse momento o back-end armazena na tabela "curtidas_candidatos" a curtida e em seguida verifica se na tabela "curtidas_vagas" existe o registro da curtida da vaga Y nesse candidato, caso exista é adicionado um registro na tabela "matchs", onde quando o candidato logar, serão procurados os matchs do mesmo. O mesmo processo vale para quando a vaga curtir um candidato, diferenciando apenas algumas tabelas. <br> <br> Resumo dos passos: <br>  - Candidato X curti vaga Y <br>  - Aplicação armazena a curtida na tabela "curtidas_candidatos"<br>  - Verifica se a vaga Y já curtiu o candidato na tabela "curtidas_vagas" <br>  - Se existir a curtida, é armazenado o candidato X e a vaga Y na tabela "matchs"<br>  - Ao logar, tanto a empresa como o candidato, a aplicação consulta a tabela "matchs" e retorna a lista de curtidas mútuas.
 
 <div align="center">
-    <img src="https://imageup.me/images/bf699f73-b491-4e58-8682-629293a10825.png" />
+    <img src="https://github.com/JuniorZanoni/Linketinder/blob/main/banco-de-dados/linketinder-DER.png?raw=true" />
     <p align="center">DER realizado com <a href="https://dbdiagram.io/home">DBDiagram</a>.</p>
 </div>
 
