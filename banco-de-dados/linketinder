@@ -1,0 +1,187 @@
+CREATE TABLE candidatos (
+	id SERIAL PRIMARY KEY,
+	nome varchar(100) NOT NULL,
+	sobrenome varchar(100) NOT NULL,
+	data_de_nascimento date NOT NULL,
+	email varchar(100) UNIQUE NOT NULL,
+	cpf char(11) UNIQUE NOT NULL,
+	pais varchar(20) NOT NULL,
+	cep char(8) NOT NULL,
+	descricao varchar(255) NOT NULL,
+	senha varchar(50) NOT NULL,
+	competencias_adicionais varchar(255)
+);
+
+CREATE TABLE empresas (
+	id SERIAL PRIMARY KEY,
+	nome varchar(100) NOT NULL,
+	cnpj char(14) UNIQUE NOT NULL,
+	email varchar(100) UNIQUE NOT NULL,
+	descricao varchar(255) NOT NULL,
+	pais varchar(20) NOT NULL,
+	cep char(8) NOT NULL,
+	senha varchar(50) NOT NULL
+);
+
+CREATE TABLE competencias (
+	id SERIAL PRIMARY KEY,
+	competencia varchar(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE vagas (
+	id SERIAL PRIMARY KEY,
+	id_empresa int NOT NULL REFERENCES empresas(id),
+	nome varchar(100) NOT NULL,
+	descricao varchar(255) NOT NULL,
+	local_vaga varchar(255) NOT NULL
+);
+
+CREATE TABLE candidatos_competencias (
+	id_candidato int NOT NULL REFERENCES candidatos(id) 
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	id_competencia int NOT NULL REFERENCES competencias(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	PRIMARY KEY(id_candidato, id_competencia)
+);
+
+CREATE TABLE vagas_competencias (
+	id_vaga int NOT NULL REFERENCES vagas(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	id_competencia int NOT NULL REFERENCES competencias(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	PRIMARY KEY(id_vaga, id_competencia)
+);
+
+CREATE TABLE curtidas_candidatos (
+	id_vaga int NOT NULL REFERENCES vagas(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	id_candidato int NOT NULL REFERENCES candidatos(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	PRIMARY KEY(id_vaga, id_candidato)
+);
+
+CREATE TABLE curtidas_vagas (
+	id_vaga int NOT NULL REFERENCES vagas(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	id_candidato int NOT NULL REFERENCES candidatos(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	PRIMARY KEY(id_vaga, id_candidato)
+);
+
+CREATE TABLE matchs (
+	id_vaga int NOT NULL REFERENCES vagas(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	id_candidato int NOT NULL REFERENCES candidatos(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
+	PRIMARY KEY(id_vaga, id_candidato)
+);
+
+INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
+				VALUES ('Júnior', 'Zanoni', '03/04/1995', 'zanoni.odenir@gmail.com', '12345678912', 'Brasil', '95520001', 'Um estudante muito dedicado', '123456789'),
+					   ('Alberto', 'Ferrari', '25/09/2000', 'alberto.ferrari@gmail.com', '12345678913', 'Brasil', '95520002', 'Trabalhei para NASA', '123456789'),
+					   ('Murilo', 'Lopes', '01/11/2002', 'murilo.lopes@gmail.com', '12345678914', 'Brasil', '95520003', 'Desenvolvo códigos com papel e caneta', '123456789'),
+					   ('Flávia', 'Fagundes', '14/08/1990', 'flavia.fagundes@gmail.com', '12345678915', 'Brasil', '95520004', 'A melhor modeladora de banco de dados', '123456789'),
+					   ('Eduarda', 'Ferreira', '24/05/1992', 'eduarda.ferreira@gmail.com', '12345678916', 'Brasil', '95520005', 'Desenvolvedor front-end e designer', '123456789');
+
+INSERT INTO empresas(nome, cnpj, email, descricao, pais, cep, senha)
+			 VALUES ('Mercado Livre', '12345671234567', 'mercadolivre@mercadolivre.com', 'Maior eCommerce da América Latina', 'Brazil', '95520000', '123456'),
+			 		('ZG Soluções', '12345671234568', 'zg@zg.com', 'Conciliar Glosas é nossa especialidade', 'Brazil', '95520000', '123456'),
+					('Aplle', '12345671234569', 'aplle@aplle.com', 'Maçã mordida', 'Brazil', '95520000', '123456'),
+					('Netflix', '12345671234558', 'netflix@netflix.com', 'Vem ver uma seriezinha', 'Brazil', '95520000', '123456'),
+					('Spotify', '12345671234545', 'spotify@spotify.com', 'Provedor de streaming de áudio sueca', 'Suécia', '88888555', '123456');
+
+INSERT INTO competencias (competencia)
+				  VALUES ('Java'),
+				  		 ('Python'),
+						 ('Groovy'),
+						 ('JavaScript'),
+						 ('TypeScript'),
+						 ('Go'),
+						 ('PHP');
+
+INSERT INTO candidatos_competencias (id_candidato, id_competencia)
+							 VALUES (1, 1),
+							 		(1, 2),
+									(1, 3),
+									(2, 4),
+							 		(2, 5),
+									(2, 1),
+									(3, 7),
+									(3, 4),
+									(3, 1),
+									(4, 3),
+									(4, 6),
+									(4, 5),
+									(5, 1),
+									(5, 7),
+									(5, 2);
+									
+
+INSERT INTO vagas (id_empresa, nome, descricao, local_vaga)
+		   VALUES (1, 'Desenvolvedor Front-End Júnior', 'Procuramos alguém para mudar o mundo', 'São Paulo'),
+		   		  (2, 'Desenvolvedor Back-End Júnior', 'Desenvolver várias gambiarras', 'Fortaleza'),
+				  (3, 'Devops Júnior', 'Trabalhar apenas em Black Friday', 'Remoto'),
+				  (4, 'Desenvolvedor FullStack', 'Procuramos alguém que manje de tudo', 'Remoto'),
+				  (5, 'QA Júnior', 'Apontar as trapalhadas dos desenvolvedores', 'Remoto');
+
+INSERT INTO vagas_competencias (id_vaga, id_competencia)
+						VALUES (1, 4),
+							   (1, 2),
+							   (1, 3),
+							   (2, 2),
+						   	   (2, 6),
+							   (2, 1),
+							   (3, 2),
+							   (3, 3),
+							   (3, 1),
+							   (4, 4),
+							   (4, 7),
+							   (4, 5),
+							   (5, 4),
+							   (5, 7),
+							   (5, 2);
+
+INSERT INTO curtidas_candidatos (id_vaga, id_candidato)
+						 VALUES (1, 5),
+						 		(1, 2),
+								(1, 4),
+								(2, 1),
+								(2, 4),
+								(2, 3),
+								(3, 5),
+								(3, 1),
+								(3, 2),
+								(4, 1),
+								(4, 2),
+								(4, 4),
+								(5, 1),
+								(5, 5),
+								(5, 4);
+								
+INSERT INTO curtidas_vagas (id_vaga, id_candidato)
+						 VALUES (1, 5),
+						 		(2, 4),
+								(3, 3),
+								(4, 2),
+								(5, 1);
+
+INSERT INTO matchs (id_vaga, id_candidato)
+			VALUES (2, 2), 
+				   (5, 5),
+				   (5, 1);
+				   
+				   
+-- SELECT vagas.nome AS vaga, candidatos.nome, candidatos.sobrenome AS sobrenome
+-- FROM matchs
+-- LEFT JOIN vagas ON vagas.id = id_vaga
+-- LEFT JOIN candidatos ON candidatos.id = id_candidato;
