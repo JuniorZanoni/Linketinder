@@ -5,36 +5,60 @@ import Utils.Utils
 class MainMenu {
 
     static void main(String[] args) {
-        Utils.populateCandidates()
-        Utils.populateCompanies()
-
         Utils.clearConsole()
-        homeMenu()
+        menu()
     }
 
-    static homeMenu() {
-        println "0 - Candidato"
-        println "1 - Empresa"
-        println "2 - Administração"
-        println "3 - Sair"
+    static menu() {
+        while (true) {
+            println "1 - Cadastro"
+            println "2 - Login"
+            println "3 - Sair"
 
-        Integer option = Utils.selectInteger(3)
+            Scanner sc = new Scanner(System.in)
 
-        switch (option) {
-            case 0:
-                new MenuSelectCandidate().menu()
-                break
-            case 1:
-                new MenuSelectCompany().menu()
-                break
-            case 2:
+            try {
+                switch (sc.nextInt()) {
+                    case 1:
+                        opcoesCadastro()
+                        break
+                    case 2:
+                        new Login().menu()
+                        break
+                    case 3:
+                        System.exit(0)
+                        break
+                }
+            } catch (Exception) {
                 Utils.clearConsole()
-                new MenuAdministration().menu()
-                break
-            case 3:
-                System.exit(0)
-                break
-            default: homeMenu()
+            }
+        }
+    }
+
+    static opcoesCadastro() {
+        while (true) {
+            Utils.clearConsole()
+            println "1 - Cadastrar candidato."
+            println "2 - Cadastrar empresa."
+            println "3 - Voltar."
+
+            Scanner sc = new Scanner(System.in)
+
+            try {
+                switch (sc.nextInt()) {
+                    case 1:
+                        new CadastroCandidato().menu()
+                        break
+                    case 2:
+                        new CadastroEmpresa().menu()
+                        break
+                    case 3:
+                        Utils.clearConsole()
+                        MainMenu.menu()
+                        break
+                }
+            } catch (Exception) {
+            }
         }
     }
 }

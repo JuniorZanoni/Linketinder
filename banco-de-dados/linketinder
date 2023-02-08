@@ -8,8 +8,7 @@ CREATE TABLE candidatos (
 	pais varchar(20) NOT NULL,
 	cep char(8) NOT NULL,
 	descricao varchar(255) NOT NULL,
-	senha varchar(50) NOT NULL,
-	competencias_adicionais varchar(255)
+	senha varchar(50) NOT NULL
 );
 
 CREATE TABLE empresas (
@@ -30,7 +29,9 @@ CREATE TABLE competencias (
 
 CREATE TABLE vagas (
 	id SERIAL PRIMARY KEY,
-	id_empresa int NOT NULL REFERENCES empresas(id),
+	id_empresa int NOT NULL REFERENCES empresas(id)
+		ON DELETE CASCADE 
+		ON UPDATE CASCADE,
 	nome varchar(100) NOT NULL,
 	descricao varchar(255) NOT NULL,
 	local_vaga varchar(255) NOT NULL
@@ -87,18 +88,18 @@ CREATE TABLE matchs (
 );
 
 INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
-				VALUES ('Júnior', 'Zanoni', '03/04/1995', 'zanoni.odenir@gmail.com', '12345678912', 'Brasil', '95520001', 'Um estudante muito dedicado', '123456789'),
-					   ('Alberto', 'Ferrari', '25/09/2000', 'alberto.ferrari@gmail.com', '12345678913', 'Brasil', '95520002', 'Trabalhei para NASA', '123456789'),
-					   ('Murilo', 'Lopes', '01/11/2002', 'murilo.lopes@gmail.com', '12345678914', 'Brasil', '95520003', 'Desenvolvo códigos com papel e caneta', '123456789'),
-					   ('Flávia', 'Fagundes', '14/08/1990', 'flavia.fagundes@gmail.com', '12345678915', 'Brasil', '95520004', 'A melhor modeladora de banco de dados', '123456789'),
-					   ('Eduarda', 'Ferreira', '24/05/1992', 'eduarda.ferreira@gmail.com', '12345678916', 'Brasil', '95520005', 'Desenvolvedor front-end e designer', '123456789');
+				VALUES ('Júnior', 'Zanoni', '03/04/1995', 'zanoni.odenir@gmail.com', '12345678912', 'Brasil', '95520001', 'Um estudante muito dedicado', 'Linke!9'),
+					   ('Alberto', 'Ferrari', '25/09/2000', 'alberto.ferrari@gmail.com', '12345678913', 'Brasil', '95520002', 'Trabalhei para NASA', 'Linke!9'),
+					   ('Murilo', 'Lopes', '01/11/2002', 'murilo.lopes@gmail.com', '12345678914', 'Brasil', '95520003', 'Desenvolvo códigos com papel e caneta', 'Linke!9'),
+					   ('Flávia', 'Fagundes', '14/08/1990', 'flavia.fagundes@gmail.com', '12345678915', 'Brasil', '95520004', 'A melhor modeladora de banco de dados', 'Linke!9'),
+					   ('Eduarda', 'Ferreira', '24/05/1992', 'eduarda.ferreira@gmail.com', '12345678916', 'Brasil', '95520005', 'Desenvolvedor front-end e designer', 'Linke!9');
 
 INSERT INTO empresas(nome, cnpj, email, descricao, pais, cep, senha)
-			 VALUES ('Mercado Livre', '12345671234567', 'mercadolivre@mercadolivre.com', 'Maior eCommerce da América Latina', 'Brazil', '95520000', '123456'),
-			 		('ZG Soluções', '12345671234568', 'zg@zg.com', 'Conciliar Glosas é nossa especialidade', 'Brazil', '95520000', '123456'),
-					('Aplle', '12345671234569', 'aplle@aplle.com', 'Maçã mordida', 'Brazil', '95520000', '123456'),
-					('Netflix', '12345671234558', 'netflix@netflix.com', 'Vem ver uma seriezinha', 'Brazil', '95520000', '123456'),
-					('Spotify', '12345671234545', 'spotify@spotify.com', 'Provedor de streaming de áudio sueca', 'Suécia', '88888555', '123456');
+			 VALUES ('Mercado Livre', '12345671234567', 'mercadolivre@mercadolivre.com', 'Maior eCommerce da América Latina', 'Brazil', '95520000', 'Linke!9'),
+			 		('ZG Soluções', '12345671234568', 'zg@zg.com', 'Conciliar Glosas é nossa especialidade', 'Brazil', '95520000', 'Linke!9'),
+					('Aplle', '12345671234569', 'aplle@aplle.com', 'Maçã mordida', 'Brazil', '95520000', 'Linke!9'),
+					('Netflix', '12345671234558', 'netflix@netflix.com', 'Vem ver uma seriezinha', 'Brazil', '95520000', 'Linke!9'),
+					('Spotify', '12345671234545', 'spotify@spotify.com', 'Provedor de streaming de áudio sueca', 'Suécia', '88888555', 'Linke!9');
 
 INSERT INTO competencias (competencia)
 				  VALUES ('Java'),
