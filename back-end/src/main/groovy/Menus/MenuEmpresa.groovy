@@ -1,19 +1,21 @@
 package Menus
 
-import Model.ModelCandidato
+
 import Model.ModelCompetencia
-import Model.ModelCurtidasCandidatos
 import Model.ModelCurtidasVagas
 import Model.ModelEmpresa
 import Model.ModelVaga
+import Usuario.Empresa
 import Usuario.Vaga
 import Utils.Utils
 
 class MenuEmpresa {
     private String email
+    private Empresa empresa
 
-    MenuEmpresa(String email) {
-        this.email = email
+    MenuEmpresa(Empresa empresa) {
+        this.email = empresa.email
+        this.empresa = empresa
     }
 
     void menu() {
@@ -306,7 +308,7 @@ class MenuEmpresa {
             println "2 - Adicionar competência."
             println "3 - Remover competência."
             println "4 - Listar competências."
-            println "5 - Voltar."
+            println "0 - Voltar."
 
             Scanner sc = new Scanner(System.in)
 
@@ -325,7 +327,7 @@ class MenuEmpresa {
                     case 4:
                         listarCompetencias(idVaga)
                         break
-                    case 5:
+                    case 0:
                         Utils.clearConsole()
                         menuVagas()
                         break
@@ -345,7 +347,7 @@ class MenuEmpresa {
             String competencia = sc.nextLine()
 
             if (competencia.matches(regex)) {
-                new ModelCompetencia().cadastrar(competencia)
+                new ModelCompetencia().save(competencia)
                 menuCompetencias(idVaga)
                 break
             }
@@ -375,7 +377,7 @@ class MenuEmpresa {
                     break
                 } else {
                     try {
-                        new ModelCompetencia().adicionaCompetenciaVaga(idVaga, index)
+                        new ModelCompetencia().saveCompetenciaVaga(idVaga, index)
                         competencias.remove(competencias.find(competencia -> competencia[0] == index.toString()))
                         Utils.clearConsole()
                     } catch (Exception e) {
@@ -404,7 +406,7 @@ class MenuEmpresa {
             Scanner sc = new Scanner(System.in)
 
             try {
-                new ModelCompetencia().removerCompetenciaVaga(idVaga, sc.nextInt())
+                new ModelCompetencia().deleteCompetenciaVaga(idVaga, sc.nextInt())
                 menuCompetencias(idVaga)
             } catch (Exception e) {
             }
@@ -432,7 +434,11 @@ class MenuEmpresa {
             println "2 - Editar nome."
             println "3 - Editar CNPJ."
             println "4 - Editar e-mail."
-            println "5 - Voltar."
+            println "5 - Editar descricao."
+            println "6 - Editar pais."
+            println "7 - Editar CEP."
+            println "7 - Editar senha."
+            println "0 - Voltar."
 
             Scanner sc = new Scanner(System.in)
 
@@ -444,76 +450,47 @@ class MenuEmpresa {
                         MainMenu.menu()
                         break
                     case 2:
-                        editarNome()
-                        editarEmpresa()
+                        String nome = Utils.inputString(Utils.regexNomeEmpresa, "Digite o novo nome.")
+                        empresa.nome = nome
+                        empresa.update()
                         break
                     case 3:
-                        editarCnpj()
-                        editarEmpresa()
+                        String cnpj = Utils.inputString(Utils.regexCnpj, "Digite o novo CNPJ.")
+                        empresa.cnpj = cnpj
+                        empresa.update()
                         break
                     case 4:
-                        editarEmail()
-                        editarEmpresa()
+                        String email = Utils.inputString(Utils.regexEmail, "Digite o novo email.")
+                        empresa.email = email
+                        empresa.update()
+                        break
+                    case 4:
+                        String descricao = Utils.inputString(Utils.regexDescricao, "Digite a nova descrição.")
+                        empresa.descricao = descricao
+                        empresa.update()
                         break
                     case 5:
+                        String pais = Utils.inputString(Utils.regexPais, "Digite o novo pais.")
+                        empresa.pais = pais
+                        empresa.update()
+                        break
+                    case 6:
+                        String cep = Utils.inputString(Utils.regexCep, "Digite o novo CEP.")
+                        empresa.cep = cep
+                        empresa.update()
+                        break
+                    case 7:
+                        String senha = Utils.inputString(Utils.regexSenha, "Digite a nova senha.")
+                        empresa.senha = senha
+                        empresa.update()
+                        break
+                    case 0:
                         Utils.clearConsole()
                         menu()
                         break
 
                 }
             } catch (Exception e) {
-            }
-        }
-    }
-
-    private void editarNome() {
-        String regex = /[A-Za-z0-9éãíóúç\-õ\s]+/
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o novo nome da empresa."
-            Scanner sc = new Scanner(System.in)
-            String nome = sc.nextLine()
-
-            if (nome.matches(regex)) {
-                new ModelEmpresa().atualizarNome(nome, this.email)
-                editarEmpresa(this.email)
-                break
-            }
-        }
-    }
-
-    private void editarCnpj() {
-        String regex = '[0-9]{14}'
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o novo CNPJ da empresa."
-            Scanner sc = new Scanner(System.in)
-            String cnpj = sc.nextLine()
-
-            if (cnpj.matches(regex)) {
-                new ModelEmpresa().atualizarCnpj(cnpj, this.email)
-                editarEmpresa(this.email)
-                break
-            }
-        }
-    }
-
-    private void editarEmail() {
-        String regex = '^(.+)@(\\S+)\\.(.+)$'
-
-        while (true) {
-            Utils.clearConsole()
-            System.out.println("Digite o novo e-mail da empresa.")
-            Scanner sc = new Scanner(System.in)
-            String novoEmail = sc.nextLine()
-
-            if (novoEmail.matches(regex)) {
-                new ModelEmpresa().atualizarEmail(novoEmail, this.email)
-                this.email = novoEmail
-                editarEmpresa(this.email)
-                break
             }
         }
     }
@@ -620,7 +597,7 @@ class MenuEmpresa {
                     break
                 } else {
                     Integer idUltimaVaga = new ModelVaga().getIdUltimaVaga()
-                    new ModelCompetencia().adicionaCompetenciaVaga(idUltimaVaga, index)
+                    new ModelCompetencia().saveCompetenciaVaga(idUltimaVaga, index)
                     competencias.remove(competencias.find(competencia -> competencia[0] == index.toString()))
                 }
             } catch (Exception e) {

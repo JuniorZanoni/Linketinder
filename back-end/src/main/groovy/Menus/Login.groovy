@@ -2,60 +2,41 @@ package Menus
 
 import Model.ModelCandidato
 import Model.ModelEmpresa
+import Usuario.Candidato
+import Usuario.Empresa
 import Utils.Utils
-
-import java.util.regex.Pattern
 
 class Login {
 
     void menu() {
-        String email = inputEmail()
-        String senha = inputSenha()
-
-        String emailCandidato = new ModelCandidato().getByEmailAndPass(email, senha)
-        String emailEmpresa = new ModelEmpresa().getByEmailAndPass(email, senha)
-
-        if (emailCandidato) {
-            Utils.clearConsole()
-            new MenuCandidato(emailCandidato).menu()
-        } else if (emailEmpresa) {
-            Utils.clearConsole()
-            new MenuEmpresa(emailEmpresa).menu()
-        }
-
-        Utils.clearConsole()
-        println "Login ou senha inválidos, tente novamente."
-        println ""
-        MainMenu.menu()
-    }
-
-    String inputEmail() {
-        String regex = '^(.+)@(\\S+)\\.(.+)$'
-
         while (true) {
-            Utils.clearConsole()
-            System.out.println("Qual seu e-mail.")
-            Scanner sc = new Scanner(System.in)
-            String email = sc.nextLine()
-
-            if (Pattern.compile(regex).matcher(email).find()) {
-                return email
-            }
+            List logins = login()
+            nextMenu(logins)
         }
     }
 
-    String inputSenha() {
-        String regex = '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#_!\\-])[0-9a-zA-Z$*&@#_!-]{6,}'
+    private List login() {
+        String email = Utils.inputString(Utils.regexEmail, "Digite seu e-mail.")
+        String senha = Utils.inputString(Utils.regexSenha, "Digite sua senha.")
 
-        while (true) {
+        Candidato candidato = new ModelCandidato().get(email, senha)
+        Empresa empresa = new ModelEmpresa().get(email, senha)
+
+        return [candidato, empresa]
+    }
+
+    private void nextMenu(List logins) {
+        if (logins[0]) {
             Utils.clearConsole()
-            System.out.println("Digite sua senha.")
-            Scanner sc = new Scanner(System.in)
-            String senha = sc.nextLine()
-
-            if (Pattern.compile(regex).matcher(senha).find()) {
-                return senha
-            }
+            new MenuCandidato(logins[0]).menu()
+        } else if (logins[1]) {
+            Utils.clearConsole()
+            new MenuEmpresa(logins[1]).menu()
+        } else {
+            Utils.clearConsole()
+            println "Login ou senha inválidos, tente novamente."
+            println ""
+            MainMenu.menu()
         }
     }
 }

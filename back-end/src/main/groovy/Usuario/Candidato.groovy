@@ -1,5 +1,8 @@
 package Usuario
 
+import Model.ModelCandidato
+import org.codehaus.groovy.util.ListHashMap
+
 import java.time.LocalDate
 
 class Candidato {
@@ -16,5 +19,27 @@ class Candidato {
         this.cep = cep
         this.descricao = descricao
         this.senha = senha
+    }
+
+    void save() {
+        new ModelCandidato().save(infosCandidato())
+    }
+
+    void update() {
+        new ModelCandidato().update(infosCandidato())
+    }
+
+    private ListHashMap infosCandidato() {
+        return [
+                nome: this.nome,
+                sobrenome: this.sobrenome,
+                dataDeNascimento: this.dataDeNascimento,
+                email: this.email,
+                cpf: this.cpf,
+                pais: this.pais,
+                cep: this.cep,
+                descricao: this.descricao,
+                senha: this.senha
+        ]
     }
 }

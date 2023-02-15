@@ -1,19 +1,20 @@
 package Menus
 
 import Model.ModelCandidato
-import Model.ModelCompetencia
 import Model.ModelCurtidasCandidatos
 import Model.ModelVaga
+import Usuario.Candidato
 import Utils.Utils
 
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class MenuCandidato {
+    private Candidato candidato
     private String email
 
-    MenuCandidato(String email) {
-        this.email = email
+    MenuCandidato(Candidato candidato) {
+        this.email = candidato.email
+        this.candidato = candidato
     }
 
     void menu() {
@@ -66,39 +67,57 @@ class MenuCandidato {
             try {
                 switch (sc.nextInt()) {
                     case 1:
-                        new ModelCandidato().apagar(email)
+                        new ModelCandidato().delete(email)
                         Utils.clearConsole()
                         menu()
                         break
                     case 2:
-                        editarNome()
+                        String nome = Utils.inputString(Utils.regexNome, "Digite o novo nome.")
+                        candidato.nome = nome
+                        candidato.update()
                         break
                     case 3:
-                        editarSobrenome()
+                        String sobrenome = Utils.inputString(Utils.regexNome, "Digite o novo sobrenome.")
+                        candidato.sobrenome = sobrenome
+                        candidato.update()
                         break
                     case 4:
-                        editarDataDeNascimento()
+                        LocalDate dataDeNascimento = Utils.inputDate(Utils.regexDataDeNascimento, "Digite a nova data de nascimento.")
+                        candidato.dataDeNascimento = dataDeNascimento
+                        candidato.update()
                         break
                     case 5:
-                        editarEmail()
+                        String email = Utils.inputString(Utils.regexNome, "Digite o novo email.")
+                        candidato.email = email
+                        candidato.update()
                         break
                     case 6:
-                        editarCpf()
+                        String cpf = Utils.inputString(Utils.regexNome, "Digite o novo cpf.")
+                        candidato.cpf = cpf
+                        candidato.update()
                         break
                     case 7:
-                        editarPais()
+                        String pais = Utils.inputString(Utils.regexNome, "Digite o novo pais.")
+                        candidato.pais = pais
+                        candidato.update()
                         break
                     case 8:
-                        editarCep()
+                        String cep = Utils.inputString(Utils.regexNome, "Digite o novo cep.")
+                        candidato.cep = cep
+                        candidato.update()
                         break
                     case 9:
-                        editarDescricao()
+                        String descricao = Utils.inputString(Utils.regexNome, "Digite a nova descricao.")
+                        candidato.descricao = descricao
+                        candidato.update()
                         break
                     case 10:
-                        editarSenha()
+                        String senha = Utils.inputString(Utils.regexNome, "Digite a nova senha.")
+                        candidato.senha = senha
+                        candidato.update()
                         break
                     case 11:
-                        menuCompetencias()
+                        new MenuCompetencia(candidato).menuCompetencias()
                         break
                     case 12:
                         Utils.clearConsole()
@@ -108,260 +127,6 @@ class MenuCandidato {
             } catch (Exception e) {
             }
         }
-    }
-
-    private void menuCompetencias() {
-        while (true) {
-            Utils.clearConsole()
-            println "1 - Criar competência."
-            println "2 - Adicionar competência."
-            println "3 - Remover competência."
-            println "4 - Listar competências."
-            println "9 - Voltar."
-
-            Scanner sc = new Scanner(System.in)
-
-            try {
-                switch (sc.nextInt()) {
-                    case 1:
-                        cadastrarCompetencia()
-                        break
-                    case 2:
-                        adicionarCompetencia()
-                        break
-                    case 3:
-                        removerCompetencia()
-                        break
-                    case 4:
-                        listarCompetencias()
-                        break
-                    case 9:
-                        menuEditar()
-                        break
-                }
-            } catch (Exception e) {
-            }
-        }
-    }
-
-    private void editarNome() {
-        String regex = /[A-Z][a-zéãíóúç]+/
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o novo nome."
-            Scanner sc = new Scanner(System.in)
-            String nome = sc.nextLine()
-
-            if (nome.matches(regex)) {
-                new ModelCandidato().atualizarNome(nome, email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarSobrenome() {
-        String regex = /([A-Z][a-zéãíóúç]+\s?)+/
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o novo sobrenome."
-            Scanner sc = new Scanner(System.in)
-            String sobrenome = sc.nextLine()
-
-            if (sobrenome.matches(regex)) {
-                new ModelCandidato().atualizarSobrenome(sobrenome, email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarDataDeNascimento() {
-        String regex = '^([0-2][0-9]|(3)[0-1])(/)(((0)[0-9])|((1)[0-2]))(/)\\d{4}$'
-
-        while (true) {
-            Utils.clearConsole()
-            System.out.println("Digite a nova data de nascimento no formato dd/mm/aaaa.")
-            Scanner sc = new Scanner(System.in)
-            String data = sc.nextLine()
-
-            if (data.matches(regex)) {
-                new ModelCandidato().atualizarDataDeNascimento(LocalDate.parse(data, DateTimeFormatter.ofPattern("dd/MM/yyyy")), email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarEmail() {
-        String regex = '^(.+)@(\\S+)\\.(.+)$'
-
-        while (true) {
-            Utils.clearConsole()
-            System.out.println("Digite seu novo e-mail.")
-            Scanner sc = new Scanner(System.in)
-            String email = sc.nextLine()
-
-            if (email.matches(regex)) {
-                new ModelCandidato().atualizarEmail(email, this.email)
-                this.email = email
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarCpf() {
-
-        String regex = '[0-9]{11}'
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o novo CPF. Digite apenas números."
-            Scanner sc = new Scanner(System.in)
-            String cpf = sc.nextLine()
-
-            if (cpf.matches(regex)) {
-                new ModelCandidato().atualizarCpf(cpf, this.email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarPais() {
-        String regex = /([A-Z][a-zéãíóúç]+\s?)+/
-
-        while (true) {
-            Utils.clearConsole()
-            println "Qual o novo país."
-            Scanner sc = new Scanner(System.in)
-            String pais = sc.nextLine()
-
-            if (pais.matches(regex)) {
-                new ModelCandidato().atualizarPais(pais, this.email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarCep() {
-
-        String regex = "[0-9]{8}"
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o novo CEP"
-            Scanner sc = new Scanner(System.in)
-            String cep = sc.nextLine()
-
-            if (cep.matches(regex)) {
-                new ModelCandidato().atualizarCep(cep, this.email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void editarDescricao() {
-        Utils.clearConsole()
-        println "Digite a nova descrição."
-        Scanner sc = new Scanner(System.in)
-
-        new ModelCandidato().atualizarDescricao(sc.nextLine(), this.email)
-        menuEditar()
-    }
-
-    private void editarSenha() {
-        String regex = '(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#_!\\-])[0-9a-zA-Z$*&@#_!-]{6,}'
-
-        while (true) {
-            Utils.clearConsole()
-            System.out.println("Digite a nova senha.")
-            Scanner sc = new Scanner(System.in)
-            String senha = sc.nextLine()
-
-            if (senha.matches(regex)) {
-                new ModelCandidato().atualizarSenha(senha, this.email)
-                menuEditar()
-                break
-            }
-        }
-    }
-
-    private void cadastrarCompetencia() {
-        String regex = /([A-Za-zéãíóúç]+\s?)+/
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite a nova competência."
-            Scanner sc = new Scanner(System.in)
-            String competencia = sc.nextLine()
-
-            if (competencia.matches(regex)) {
-                new ModelCompetencia().cadastrar(competencia)
-                menuCompetencias()
-                break
-            }
-        }
-    }
-
-    private void adicionarCompetencia() {
-        List competencias = new ModelCompetencia().getCompetencias()
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o número da competência que deseja adicionar."
-
-            competencias.forEach { competencia ->
-                println "${competencia[0]} - ${competencia[1]}"
-            }
-
-            Scanner sc = new Scanner(System.in)
-
-            try {
-                new ModelCompetencia().adicionaCompetenciaUsuario(email, sc.nextInt())
-                menuCompetencias()
-            } catch (Exception e) {
-            }
-        }
-    }
-
-    private void removerCompetencia() {
-        List competencias = new ModelCompetencia().getCompetenciasUsuario(email)
-
-        while (true) {
-            Utils.clearConsole()
-            println "Digite o número da competência que deseja remover."
-
-            competencias.forEach { competencia ->
-                println "${competencia[0]} - ${competencia[1]}"
-            }
-
-            Scanner sc = new Scanner(System.in)
-
-            try {
-                new ModelCompetencia().removerCompetenciaUsuario(sc.nextInt(), email)
-                menuCompetencias()
-            } catch (Exception e) {
-            }
-        }
-    }
-
-    private void listarCompetencias() {
-        Utils.clearConsole()
-        List competencias = new ModelCompetencia().getCompetenciasUsuario(email)
-        competencias.forEach { competencia ->
-            println "${competencia[0]} - ${competencia[1]}"
-        }
-        println ""
-        println "Pressione enter para voltar."
-        Scanner sc = new Scanner(System.in)
-        sc.nextLine()
-        menuCompetencias()
     }
 
     private void menuCurtir() {
@@ -416,7 +181,7 @@ class MenuCandidato {
 
     private void menuMatches() {
         Utils.clearConsole()
-        List vagas = new ModelCandidato().matches(email)
+        List vagas = new ModelCandidato().getMatches(email)
 
         if (vagas.size() > 0) {
             vagas.forEach(vaga -> {
