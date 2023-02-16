@@ -1,16 +1,20 @@
 package Model
 
-import Usuario.Candidato
-import org.codehaus.groovy.util.ListHashMap
+import Service.Candidato
 
 import java.time.LocalDate
 
 class ModelCandidato {
+    def connection
 
-    Candidato get(String email, String senha) {
+    ModelCandidato(connection) {
+        this.connection = connection
+    }
+
+    Candidato load(String email, String senha) {
         def candidato
 
-        Connection.sql.query('''SELECT * FROM candidatos WHERE email = ? AND senha = ?;''', [email, senha]) { resultSet ->
+        connection.sql.query('''SELECT * FROM candidatos WHERE email = ? AND senha = ?;''', [email, senha]) { resultSet ->
             if (resultSet.next()) {
                 String nome = resultSet.getString('nome').toString()
                 String sobrenome = resultSet.getString('sobrenome').toString()
@@ -22,15 +26,15 @@ class ModelCandidato {
                 String descricao = resultSet.getString('descricao').toString()
                 String senhaCandidato = resultSet.getString('senha').toString()
 
-                candidato = new Candidato(nome, sobrenome, dataDeNascimento, emailCandidato, cpf, pais, cep, descricao, senhaCandidato)
+                candidato = new Candidato(nome, emailCandidato, pais, cep, descricao, senhaCandidato, sobrenome, cpf, dataDeNascimento)
             }
         }
 
         return candidato
     }
 
-    void save(ListHashMap candidato) {
-        Connection.sql.execute('''
+    void save(Candidato candidato) {
+        connection.sql.execute('''
             INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
                             VALUES (?,?,?,?,?,?,?,?,?)''',
                 [
@@ -47,42 +51,22 @@ class ModelCandidato {
         )
     }
 
-    void update(ListHashMap candidato) {
-        Connection.sql.execute('''UPDATE candidatos SET nome = ? WHERE email = ?''', [candidato.nome, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET sobrenome = ? WHERE email = ?''', [candidato.sobrenome, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET data_de_nascimento = ? WHERE email = ?''', [candidato.dataDeNascimento, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET email = ? WHERE email = ?''', [candidato.email, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET cpf = ? WHERE email = ?''', [candidato.cpf, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET pais = ? WHERE email = ?''', [candidato.pais, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET cep = ? WHERE email = ?''', [candidato.cep, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET descricao = ? WHERE email = ?''', [candidato.descricao, candidato.email])
-        Connection.sql.execute('''UPDATE candidatos SET senha = ? WHERE email = ?''', [candidato.senha, candidato.email])
+    void delete(Candidato candidato) {
+        connection.sql.execute('''DELETE FROM candidatos WHERE email = ?;''', [candidato.email])
     }
 
-    void delete(String email) {
-        Connection.sql.execute('''DELETE FROM candidatos WHERE email = ?;''', [email])
+    void update(Candidato candidato) {
+        connection.sql.execute('''UPDATE candidatos SET nome = ? WHERE email = ?''', [candidato.nome, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET sobrenome = ? WHERE email = ?''', [candidato.sobrenome, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET data_de_nascimento = ? WHERE email = ?''', [candidato.dataDeNascimento, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET cpf = ? WHERE email = ?''', [candidato.cpf, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET pais = ? WHERE email = ?''', [candidato.pais, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET cep = ? WHERE email = ?''', [candidato.cep, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET descricao = ? WHERE email = ?''', [candidato.descricao, candidato.email])
+        connection.sql.execute('''UPDATE candidatos SET senha = ? WHERE email = ?''', [candidato.senha, candidato.email])
     }
 
-    List getMatches(String email) {
-        List vagas = []
-
-        Connection.sql.query('''
-                                    SELECT vagas.id, empresas.nome AS empresa, vagas.nome AS vaga, vagas.descricao, vagas.local_vaga FROM matchs
-                                        LEFT JOIN candidatos ON candidatos.id = matchs.id_candidato
-                                        LEFT JOIN vagas ON vagas.id = matchs.id_vaga
-                                        LEFT JOIN empresas ON empresas.id = vagas.id_empresa
-                                        WHERE candidatos.email = ?;
-        ''', [email]) { resultSet ->
-            while (resultSet.next()) {
-                Integer idVaga = resultSet.getInt('id')
-                String empresa = resultSet.getString('empresa').toString()
-                String vaga = resultSet.getString('vaga').toString()
-                String descricao = resultSet.getString('descricao').toString()
-                String local = resultSet.getString('local_vaga').toString()
-                vagas.add([idVaga: idVaga, empresa: empresa, vaga: vaga, descricao: descricao, local: local])
-            }
-        }
-
-        return vagas
+    void updateEmail(Candidato candidato, String email) {
+        connection.sql.execute('''UPDATE candidatos SET email = ? WHERE email = ?''', [email, candidato.email])
     }
 }

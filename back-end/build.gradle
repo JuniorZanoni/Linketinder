@@ -2,7 +2,7 @@ plugins {
     id 'groovy'
 }
 
-group 'zg'
+group 'org.example'
 version '1.0-SNAPSHOT'
 
 repositories {

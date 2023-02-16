@@ -1,26 +1,34 @@
 package Model
 
+import Service.Candidato
+
 class ModelCurtidasCandidatos {
-    void curtiVaga(Integer idVaga, String email) {
-        Connection.sql.execute('''
+    def connection
+
+    ModelCurtidasCandidatos(connection) {
+        this.connection = connection
+    }
+
+    void curtiVaga(Integer idVaga, Candidato candidato) {
+        connection.sql.execute('''
                                     INSERT INTO curtidas_candidatos (id_vaga, id_candidato) 
                                         VALUES (?, (SELECT id FROM candidatos WHERE email = ?))
                                ''',
-                [idVaga, email]
+                [idVaga, candidato.email]
         )
     }
 
-    boolean match(Integer idVaga, String email) {
+    boolean match(Integer idVaga, Candidato candidato) {
         boolean match = false
 
-        Connection.sql.query('''
+        connection.sql.query('''
                     SELECT * FROM curtidas_vagas WHERE id_vaga = ? AND id_candidato = (SELECT id FROM candidatos WHERE email = ?)
-                    ''', [idVaga, email]) { resultSet ->
+                    ''', [idVaga, candidato.email]) { resultSet ->
 
             if (resultSet.next()) {
-                Connection.sql.execute('''
+                connection.sql.execute('''
                     INSERT INTO matchs (id_vaga, id_candidato) VALUES (?, (SELECT id FROM candidatos WHERE email = ?))
-                    ''', [idVaga, email])
+                    ''', [idVaga, candidato.email])
 
                 match = true
             }

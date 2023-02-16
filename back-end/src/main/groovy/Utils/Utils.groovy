@@ -25,10 +25,10 @@ class Utils {
             Utils.clearConsole()
             println message
             Scanner sc = new Scanner(System.in)
-            String inoutValue = sc.nextLine()
+            String value = sc.nextLine()
 
-            if (inoutValue.matches(regex)) {
-                return inoutValue
+            if (value.matches(regex)) {
+                return value
             }
         }
     }

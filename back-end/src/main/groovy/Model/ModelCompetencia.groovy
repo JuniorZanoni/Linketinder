@@ -1,18 +1,37 @@
 package Model
 
-import Usuario.Candidato
+import Service.Candidato
 
 class ModelCompetencia {
+    def connection
 
-    void save(String competencia) {
-        Connection.sql.execute('''INSERT INTO competencias (competencia) VALUES (?)''', [competencia])
+    ModelCompetencia(connection) {
+        this.connection = connection
     }
 
-    List getCompetencias() {
+    void saveCompetencia(String competencia) {
+        connection.sql.execute('''INSERT INTO competencias (competencia) VALUES (?)''', [competencia])
+    }
+
+    void saveCompeteciaUser(Candidato candidato, Integer idCompetencia) {
+        connection.sql.execute('''INSERT INTO candidatos_competencias (id_candidato, id_competencia) 
+                                  VALUES (
+                                        (SELECT id FROM candidatos WHERE email = ?), 
+                                        (SELECT id FROM competencias WHERE id = ?))''',
+                [candidato.email, idCompetencia])
+    }
+
+    void removeCompetenciaUser(Candidato candidato, Integer idCompetencia) {
+        connection.sql.execute('''DELETE FROM candidatos_competencias 
+                                    WHERE id_competencia = ? AND id_candidato = (SELECT id FROM candidatos WHERE email = ?);''',
+                [idCompetencia, candidato.email])
+    }
+
+    List loadAllCompetencias() {
 
         List competencias = []
 
-        Connection.sql.query('''SELECT * FROM competencias;''') { resultSet ->
+        connection.sql.query('''SELECT * FROM competencias;''') { resultSet ->
             while (resultSet.next()) {
                 String id = resultSet.getInt('id').toString()
                 String competencia = resultSet.getString('competencia').toString()
@@ -23,16 +42,17 @@ class ModelCompetencia {
         return competencias
     }
 
-    List getCompetenciasUsuario(String email) {
+    List loadCompetenciasUser(Candidato candidato) {
 
         List competencias = []
 
-        Connection.sql.query('''SELECT id_competencia, competencia FROM candidatos_competencias
-                                        LEFT JOIN candidatos ON candidatos.id = candidatos_competencias.id_candidato
-                                        LEFT JOIN competencias ON competencias.id = candidatos_competencias.id_competencia
-                                        WHERE candidatos.email = ?;''', [email]) { resultSet ->
+        connection.sql.query('''SELECT id, competencia FROM competencias
+                                LEFT JOIN (SELECT * FROM candidatos_competencias WHERE id_candidato = 
+                                (SELECT id FROM candidatos WHERE email = ?)) as candidatos_competencias
+                                ON competencias.id = candidatos_competencias.id_competencia
+                                WHERE id_candidato IS NOT NULL;''', [candidato.email]) { resultSet ->
             while (resultSet.next()) {
-                String id = resultSet.getInt('id_competencia').toString()
+                String id = resultSet.getInt('id').toString()
                 String competencia = resultSet.getString('competencia').toString()
                 competencias.add([id, competencia])
             }
@@ -41,29 +61,17 @@ class ModelCompetencia {
         return competencias
     }
 
-    void addCompetenciaUsuario(Candidato candidato, Integer competencia) {
-        Connection.sql.execute('''INSERT INTO candidatos_competencias (id_candidato, id_competencia) 
-                                  VALUES (
-                                        (SELECT id FROM candidatos WHERE email = ?), 
-                                        (SELECT id FROM competencias WHERE id = ?))''',
-                [candidato.email, competencia])
-    }
-
-    void deleteCompetenciaUsuario(Integer competencia, String email) {
-        Connection.sql.execute('''DELETE FROM candidatos_competencias 
-                                    WHERE id_competencia = ? AND id_candidato = (SELECT id FROM candidatos WHERE email = ?);''',
-                [competencia, email])
-    }
-
-    List getCompetenciasVaga(Integer idVaga) {
+    List loadCompetenciasNotUser(Candidato candidato) {
 
         List competencias = []
 
-        Connection.sql.query('''SELECT id_competencia, competencia FROM vagas_competencias
-                                        LEFT JOIN competencias ON competencias.id = vagas_competencias.id_competencia
-                                        WHERE id_vaga = ?;''', [idVaga]) { resultSet ->
+        connection.sql.query('''SELECT id, competencia FROM competencias
+                                LEFT JOIN (SELECT * FROM candidatos_competencias WHERE id_candidato = 
+                                (SELECT id FROM candidatos WHERE email = ?)) as candidatos_competencias
+                                ON competencias.id = candidatos_competencias.id_competencia
+                                WHERE id_candidato IS NULL;''', [candidato.email]) { resultSet ->
             while (resultSet.next()) {
-                String id = resultSet.getInt('id_competencia').toString()
+                String id = resultSet.getInt('id').toString()
                 String competencia = resultSet.getString('competencia').toString()
                 competencias.add([id, competencia])
             }
@@ -71,16 +79,4 @@ class ModelCompetencia {
 
         return competencias
     }
-
-    void saveCompetenciaVaga(Integer idVaga, Integer idCompetencia) {
-        Connection.sql.execute('''INSERT INTO vagas_competencias (id_vaga, id_competencia) VALUES (?, ?)''',
-                [idVaga, idCompetencia])
-    }
-
-    void deleteCompetenciaVaga(Integer idVaga, Integer idCompetencia) {
-        Connection.sql.execute('''DELETE FROM vagas_competencias 
-                                    WHERE id_vaga = ? AND id_competencia = ?;''',
-                [idVaga, idCompetencia])
-    }
-
 }
