@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f4c08e8-b071-40d7-b180-9bf32c9fddf7" name="Changes" comment="" />
+    <list default="true" id="9cacfbda-70fd-4411-a10f-315366762c15" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,7 +18,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LmIh3Jd6RVoKsM1LjNjyHIz6kl" />
+  <component name="ProjectId" id="2LyjMeUaLzUY0gTaFzSNRPc6pnk" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -28,45 +28,120 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;zulu-1.8&quot;,
     &quot;last_opened_file_path&quot;: &quot;/home/zanoni/acelera-zg/projects/Linketinder/back-end&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="model" />
+      <recent name="View.Utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainMenu">
-    <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="View.MainMenu" />
-      <module name="back-end.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="View.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+  <component name="RunManager" selected="Gradle.CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista">
+    <configuration name="CompetenciaTest.deveRetornarAListaDeCompetenciasConvertidaEmBO" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;CompetenciaTest.deveRetornarAListaDeCompetenciasConvertidaEmBO&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
-    <configuration name="Teste" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
+    <configuration name="CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="ConvertStringInLocalDateTest.deveConveterUmaStringEmLocalDate" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ConvertStringInLocalDateTest.deveConveterUmaStringEmLocalDate&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="RegexTest.DeveRetornarFalseQuandoNaoPassaNoRegex" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;RegexTest.DeveRetornarFalseQuandoNaoPassaNoRegex&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="Test" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
       <module name="back-end.main" />
-      <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/View/Teste.groovy" />
+      <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/Test.groovy" />
       <setting name="vmparams" value="" />
       <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$/src/main/groovy/View" />
+      <setting name="workDir" value="file://$PROJECT_DIR$/src/main/groovy" />
       <setting name="debug" value="false" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -74,21 +149,25 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Groovy.Teste" />
+        <item itemvalue="Gradle.CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista" />
+        <item itemvalue="Gradle.CompetenciaTest.deveRetornarAListaDeCompetenciasConvertidaEmBO" />
+        <item itemvalue="Groovy.Test" />
+        <item itemvalue="Gradle.ConvertStringInLocalDateTest.deveConveterUmaStringEmLocalDate" />
+        <item itemvalue="Gradle.RegexTest.DeveRetornarFalseQuandoNaoPassaNoRegex" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4f4c08e8-b071-40d7-b180-9bf32c9fddf7" name="Changes" comment="" />
-      <created>1676469946468</created>
+      <changelist id="9cacfbda-70fd-4411-a10f-315366762c15" name="Changes" comment="" />
+      <created>1676850170112</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676469946468</updated>
-      <workItem from="1676469947564" duration="21872000" />
-      <workItem from="1676542229027" duration="7385000" />
+      <updated>1676850170112</updated>
+      <workItem from="1676850171219" duration="2748000" />
+      <workItem from="1676881292389" duration="17740000" />
+      <workItem from="1676908724373" duration="27067000" />
     </task>
     <servers />
   </component>
