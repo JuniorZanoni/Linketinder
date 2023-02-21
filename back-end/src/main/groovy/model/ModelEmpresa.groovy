@@ -3,17 +3,19 @@ package model
 import service.user.empresa.Empresa
 import groovy.sql.Sql
 
-class ModelEmpresa {
-    Sql connection
+import java.sql.Connection
 
-    ModelEmpresa(Sql connection) {
-        this.connection = connection
+class ModelEmpresa {
+    Sql sql
+
+    ModelEmpresa(Connection connection) {
+        this.sql = Sql.newInstance(connection)
     }
 
     Empresa getEmpresa(String email, String senha) {
         Empresa empresa = null
 
-        connection.query('''SELECT * FROM empresas WHERE email = ? AND senha = ?;''', [email, senha]) { resultSet ->
+        sql.query('''SELECT * FROM empresas WHERE email = ? AND senha = ?;''', [email, senha]) { resultSet ->
             if (resultSet.next()) {
                 String nome = resultSet.getString('nome')
                 String emailEmpresa = resultSet.getString('email')
@@ -32,7 +34,7 @@ class ModelEmpresa {
 
     Integer getId(Empresa empresa) {
         Integer id = 0
-        connection.query('''
+        sql.query('''
             SELECT id FROM empresas WHERE email = ?;''', [empresa.email]
         ) {resultSet ->
             resultSet.next()
@@ -43,7 +45,7 @@ class ModelEmpresa {
     }
 
     void save(Empresa empresa) {
-        connection.execute('''
+        sql.execute('''
             INSERT INTO empresas (nome, cnpj, email, description, pais, cep, password)
                             VALUES (?,?,?,?,?,?,?)''',
                 [
@@ -59,16 +61,16 @@ class ModelEmpresa {
     }
 
     void delete(Empresa empresa) {
-        connection.execute('''DELETE FROM empresas WHERE email = ?;''', [empresa.email])
+        sql.execute('''DELETE FROM empresas WHERE email = ?;''', [empresa.email])
     }
 
     void update(Empresa empresa, Integer idEmpresa) {
-        connection.execute('''UPDATE empresas SET nome = ? WHERE id = ?''', [empresa.nome, idEmpresa])
-        connection.execute('''UPDATE empresas SET cnpj = ? WHERE id = ?''', [empresa.cnpj, idEmpresa])
-        connection.execute('''UPDATE empresas SET email = ? WHERE id = ?''', [empresa.email, idEmpresa])
-        connection.execute('''UPDATE empresas SET descricao = ? WHERE id = ?''', [empresa.descricao, idEmpresa])
-        connection.execute('''UPDATE empresas SET pais = ? WHERE id = ?''', [empresa.pais, idEmpresa])
-        connection.execute('''UPDATE empresas SET cep = ? WHERE id = ?''', [empresa.cep, idEmpresa])
-        connection.execute('''UPDATE empresas SET senha = ? WHERE id = ?''', [empresa.senha, idEmpresa])
+        sql.execute('''UPDATE empresas SET nome = ? WHERE id = ?''', [empresa.nome, idEmpresa])
+        sql.execute('''UPDATE empresas SET cnpj = ? WHERE id = ?''', [empresa.cnpj, idEmpresa])
+        sql.execute('''UPDATE empresas SET email = ? WHERE id = ?''', [empresa.email, idEmpresa])
+        sql.execute('''UPDATE empresas SET descricao = ? WHERE id = ?''', [empresa.descricao, idEmpresa])
+        sql.execute('''UPDATE empresas SET pais = ? WHERE id = ?''', [empresa.pais, idEmpresa])
+        sql.execute('''UPDATE empresas SET cep = ? WHERE id = ?''', [empresa.cep, idEmpresa])
+        sql.execute('''UPDATE empresas SET senha = ? WHERE id = ?''', [empresa.senha, idEmpresa])
     }
 }

@@ -5,19 +5,19 @@ import service.user.candidato.Candidato
 import service.user.empresa.Empresa
 import service.vaga.Vaga
 
-import java.sql.ResultSet
+import java.sql.Connection
 
 class ModelVaga {
-    Sql connection
+    Sql sql
 
-    ModelVaga(Sql connection) {
-        this.connection = connection
+    ModelVaga(Connection connection) {
+        this.sql = Sql.newInstance(connection)
     }
 
     Integer getId(Vaga vaga, Integer idEmpresa) {
         Integer idVaga = null
 
-        connection.query('''SELECT id FROM vagas WHERE id_empresa = ? AND nome = ? AND descricao = ?;''',
+        sql.query('''SELECT id FROM vagas WHERE id_empresa = ? AND nome = ? AND descricao = ?;''',
                 [idEmpresa, vaga.name, vaga.description]
         ) {resultSet ->
             resultSet.next()
@@ -30,7 +30,7 @@ class ModelVaga {
     List<Vaga> getAllVagasByEmpresa(Integer idEmpresa) {
         List<Vaga> vagas = []
 
-        connection.query('''SELECT vagas.nome, vagas.descricao, vagas.local_vaga FROM vagas
+        sql.query('''SELECT vagas.nome, vagas.descricao, vagas.local_vaga FROM vagas
                                 LEFT JOIN empresas ON vagas.id_empresa = empresas.id
                                 WHERE empresas.id = ?;''', [idEmpresa]) { resultSet ->
             while (resultSet.next()) {
@@ -48,26 +48,26 @@ class ModelVaga {
     }
 
     void save(Vaga vaga, Integer idEmpresa) {
-        connection.execute('''INSERT INTO vagas (id_empresa, nome, descricao, local_vaga) VALUES (?,?,?,?)''',
+        sql.execute('''INSERT INTO vagas (id_empresa, nome, descricao, local_vaga) VALUES (?,?,?,?)''',
                 [idEmpresa, vaga.name, vaga.description, vaga.local]
         )
     }
 
     void update(Vaga vaga, Integer idVaga) {
-        connection.execute('''UPDATE vagas SET nome = ? WHERE id = ?;''', [vaga.name, idVaga])
-        connection.execute('''UPDATE vagas SET descricao = ? WHERE id = ?;''', [vaga.description, idVaga])
-        connection.execute('''UPDATE vagas SET local_vaga = ? WHERE id = ?;''', [vaga.local, idVaga])
+        sql.execute('''UPDATE vagas SET nome = ? WHERE id = ?;''', [vaga.name, idVaga])
+        sql.execute('''UPDATE vagas SET descricao = ? WHERE id = ?;''', [vaga.description, idVaga])
+        sql.execute('''UPDATE vagas SET local_vaga = ? WHERE id = ?;''', [vaga.local, idVaga])
     }
 
     void delete(Integer idVaga) {
-        connection.execute('''DELETE FROM vagas WHERE id = ?;''', [idVaga])
+        sql.execute('''DELETE FROM vagas WHERE id = ?;''', [idVaga])
     }
 
     List listarTodasVagasDisponiveisPorCandidato(Candidato candidato) {
 
         List vagas = []
 
-        connection.query('''SELECT * FROM vagas
+        sql.query('''SELECT * FROM vagas
                                         LEFT JOIN (SELECT * FROM curtidas_candidatos 
                                         WHERE id_candidato = (SELECT id FROM candidatos WHERE email = ?)) AS curtidas ON curtidas.id_vaga = vagas.id
                                         WHERE id_vaga IS NULL;''', [candidato.email]) { resultSet ->
@@ -87,7 +87,7 @@ class ModelVaga {
 
         List vagas = []
 
-        connection.query('''
+        sql.query('''
                                         SELECT candidatos.descricao, candidatos.id FROM candidatos
                                         LEFT JOIN (SELECT * FROM curtidas_vagas WHERE id_vaga = ?) AS curtidas ON curtidas.id_candidato = candidatos.id
                                         WHERE id_candidato IS NULL;
@@ -106,7 +106,7 @@ class ModelVaga {
 
         List vagas = []
 
-        connection.query('''SELECT vagas.id, vagas.nome, vagas.descricao, vagas.local_vaga FROM vagas
+        sql.query('''SELECT vagas.id, vagas.nome, vagas.descricao, vagas.local_vaga FROM vagas
                                         LEFT JOIN empresas ON vagas.id_empresa = empresas.id
                                         WHERE empresas.id = ?;''', [idEmpresa]) { resultSet ->
             while (resultSet.next()) {
@@ -122,7 +122,7 @@ class ModelVaga {
     }
 
    String verifyVagaID(Empresa empresa, Integer idVaga) {
-        connection.firstRow('''SELECT vagas.id FROM vagas
+        sql.firstRow('''SELECT vagas.id FROM vagas
                                 LEFT JOIN empresas ON vagas.id_empresa = empresas.id
                                 WHERE empresas.email = ? AND vagas.id = ?''', [empresa.email, idVaga])
     }

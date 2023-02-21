@@ -38,11 +38,9 @@ class VagaView {
                     break
                 case "3":
                     new ListVagas(empresa).menu()
-                    ClearConsole.clear()
                     break
                 case "4":
                     new CurtirVagaView(empresa).menu()
-                    ClearConsole.clear()
                     break
                 case "5":
                     new MatchesVagaView(empresa).menu()

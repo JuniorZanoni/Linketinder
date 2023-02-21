@@ -3,18 +3,20 @@ package model.modelCompetencia
 import groovy.sql.Sql
 import service.competencia.Competencia
 
+import java.sql.Connection
+
 class ModelCompetenciaCandidato implements IModelCompetencia {
 
-    Sql connection
+    Sql sql
 
-    ModelCompetenciaCandidato(Sql connection) {
-        this.connection = connection
+    ModelCompetenciaCandidato(Connection connection) {
+        this.sql = Sql.newInstance(connection)
     }
 
     List<Competencia> getCompetencias(Integer idCandidato) {
         List competencias = []
 
-        connection.query('''SELECT id, competencia FROM competencias
+       sql.query('''SELECT id, competencia FROM competencias
                                 LEFT JOIN (SELECT * FROM candidatos_competencias WHERE id_candidato = 
                                 (SELECT id FROM candidatos WHERE id = ?)) as candidatos_competencias
                                 ON competencias.id = candidatos_competencias.id_competencia
@@ -33,7 +35,7 @@ class ModelCompetenciaCandidato implements IModelCompetencia {
 
         List competencias = []
 
-        connection.query('''SELECT id, competencia FROM competencias
+       sql.query('''SELECT id, competencia FROM competencias
                                 LEFT JOIN (SELECT * FROM candidatos_competencias WHERE id_candidato = 
                                 (SELECT id FROM candidatos WHERE id = ?)) as candidatos_competencias
                                 ON competencias.id = candidatos_competencias.id_competencia
@@ -49,12 +51,12 @@ class ModelCompetenciaCandidato implements IModelCompetencia {
     }
 
     void saveCompetecia(Integer idCandidato, Integer idCompetencia) {
-        connection.execute('''INSERT INTO candidatos_competencias (id_candidato, id_competencia) VALUES (?, ?);''',
+       sql.execute('''INSERT INTO candidatos_competencias (id_candidato, id_competencia) VALUES (?, ?);''',
                 [idCandidato, idCompetencia])
     }
 
     void deleteCompetecia(Integer idCandidato, Integer idCompetencia) {
-        connection.execute('''DELETE FROM candidatos_competencias WHERE id_competencia = ? AND id_candidato = ?;''',
+       sql.execute('''DELETE FROM candidatos_competencias WHERE id_competencia = ? AND id_candidato = ?;''',
                 [idCompetencia.toInteger(), idCandidato])
     }
 }

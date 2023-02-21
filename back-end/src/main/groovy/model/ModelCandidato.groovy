@@ -3,16 +3,18 @@ package model
 import service.user.candidato.Candidato
 import groovy.sql.Sql
 
-class ModelCandidato {
-    Sql connection
+import java.sql.Connection
 
-    ModelCandidato(Sql connection) {
-        this.connection = connection
+class ModelCandidato {
+    Sql sql
+
+    ModelCandidato(Connection connection) {
+        this.sql = Sql.newInstance(connection)
     }
 
     Integer getId(Candidato candidato) {
         Integer id = 0
-        connection.query('''
+        sql.query('''
             SELECT id FROM candidatos WHERE email = ?;''', [candidato.email]
         ) {resultSet ->
             resultSet.next()
@@ -25,7 +27,7 @@ class ModelCandidato {
     Candidato getCandidato(String email, String senha) {
         Candidato candidato = null
 
-        connection.query('''SELECT * FROM candidatos WHERE email = ? AND senha = ?;''', [email, senha]) { resultSet ->
+        sql.query('''SELECT * FROM candidatos WHERE email = ? AND senha = ?;''', [email, senha]) { resultSet ->
             if (resultSet.next()) {
                 String nome = resultSet.getString('nome')
                 String sobrenome = resultSet.getString('sobrenome')
@@ -45,7 +47,7 @@ class ModelCandidato {
     }
 
     void save(Candidato candidato) {
-        connection.execute('''
+        sql.execute('''
             INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
                             VALUES (?,?,?,?,?,?,?,?,?)''',
                 [
@@ -63,18 +65,18 @@ class ModelCandidato {
     }
 
     void delete(Candidato candidato) {
-        connection.execute('''DELETE FROM candidatos WHERE email = ?;''', [candidato.email])
+        sql.execute('''DELETE FROM candidatos WHERE email = ?;''', [candidato.email])
     }
 
     void update(Candidato candidato, Integer idCandidato) {
-        connection.execute('''UPDATE candidatos SET nome = ? WHERE id = ?''', [candidato.name, idCandidato])
-        connection.execute('''UPDATE candidatos SET sobrenome = ? WHERE id = ?''', [candidato.lastname, idCandidato])
-        connection.execute('''UPDATE candidatos SET data_de_nascimento = ? WHERE id = ?''', [candidato.dateOfBirth, idCandidato])
-        connection.execute('''UPDATE candidatos SET email = ? WHERE id = ?''', [candidato.email, idCandidato])
-        connection.execute('''UPDATE candidatos SET cpf = ? WHERE id = ?''', [candidato.cpf, idCandidato])
-        connection.execute('''UPDATE candidatos SET pais = ? WHERE id = ?''', [candidato.country, idCandidato])
-        connection.execute('''UPDATE candidatos SET cep = ? WHERE id = ?''', [candidato.cep, idCandidato])
-        connection.execute('''UPDATE candidatos SET descricao = ? WHERE id = ?''', [candidato.description, idCandidato])
-        connection.execute('''UPDATE candidatos SET senha = ? WHERE id = ?''', [candidato.password, idCandidato])
+        sql.execute('''UPDATE candidatos SET nome = ? WHERE id = ?''', [candidato.name, idCandidato])
+        sql.execute('''UPDATE candidatos SET sobrenome = ? WHERE id = ?''', [candidato.lastname, idCandidato])
+        sql.execute('''UPDATE candidatos SET data_de_nascimento = ? WHERE id = ?''', [candidato.dateOfBirth, idCandidato])
+        sql.execute('''UPDATE candidatos SET email = ? WHERE id = ?''', [candidato.email, idCandidato])
+        sql.execute('''UPDATE candidatos SET cpf = ? WHERE id = ?''', [candidato.cpf, idCandidato])
+        sql.execute('''UPDATE candidatos SET pais = ? WHERE id = ?''', [candidato.country, idCandidato])
+        sql.execute('''UPDATE candidatos SET cep = ? WHERE id = ?''', [candidato.cep, idCandidato])
+        sql.execute('''UPDATE candidatos SET descricao = ? WHERE id = ?''', [candidato.description, idCandidato])
+        sql.execute('''UPDATE candidatos SET senha = ? WHERE id = ?''', [candidato.password, idCandidato])
     }
 }

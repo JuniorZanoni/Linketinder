@@ -3,15 +3,17 @@ package model.modelCurtidas
 import groovy.sql.Sql
 import service.user.candidato.Candidato
 
-class ModelCurtidasCandidatos {
-    Sql connection
+import java.sql.Connection
 
-    ModelCurtidasCandidatos(Sql connection) {
-        this.connection = connection
+class ModelCurtidasCandidatos {
+    Sql sql
+
+    ModelCurtidasCandidatos(Connection connection) {
+        this.sql = Sql.newInstance(connection)
     }
 
     void curtiVaga(Integer idVaga, Candidato candidato) {
-        connection.execute('''
+        sql.execute('''
                                     INSERT INTO curtidas_candidatos (id_vaga, id_candidato) 
                                         VALUES (?, (SELECT id FROM candidatos WHERE email = ?))
                                ''',
@@ -22,12 +24,12 @@ class ModelCurtidasCandidatos {
     boolean match(Integer idVaga, Candidato candidato) {
         boolean match = false
 
-        connection.query('''
+        sql.query('''
                     SELECT * FROM curtidas_vagas WHERE id_vaga = ? AND id_candidato = (SELECT id FROM candidatos WHERE email = ?)
                     ''', [idVaga, candidato.email]) { resultSet ->
 
             if (resultSet.next()) {
-                connection.execute('''
+                sql.execute('''
                     INSERT INTO matchs (id_vaga, id_candidato) VALUES (?, (SELECT id FROM candidatos WHERE email = ?))
                     ''', [idVaga, candidato.email])
 

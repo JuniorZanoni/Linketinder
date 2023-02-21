@@ -1,18 +1,22 @@
 package model
 
-import groovy.sql.Sql
+import java.sql.Connection
+import java.sql.DriverManager
 
 class DBConnection {
-    static Sql connection = Sql.newInstance(
-            "jdbc:postgresql://localhost/postgres",
-            "postgres",
-            "postgres",
-            "org.postgresql.Driver"
-    )
+    static Connection connection
 
     private DBConnection(){}
 
-    static Sql getDBConnection() {
+    static Connection getDBConnection() {
+        if(connection == null) {
+            connection = DriverManager.getConnection(
+                    "jdbc:postgresql://localhost/postgres",
+                    "postgres",
+                    "postgres"
+            )
+        }
+
         return connection
     }
 }

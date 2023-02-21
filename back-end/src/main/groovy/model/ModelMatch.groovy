@@ -3,17 +3,19 @@ package model
 import groovy.sql.Sql
 import service.user.candidato.Candidato
 
-class ModelMatch {
-    Sql connection
+import java.sql.Connection
 
-    ModelMatch(connection) {
-        this.connection = connection
+class ModelMatch {
+    Sql sql
+
+    ModelMatch(Connection connection) {
+        this.sql = Sql.newInstance(connection)
     }
 
     List getMatchesCandidato(Candidato candidato) {
         List matches = []
 
-        connection.query('''
+        sql.query('''
                                     SELECT vagas.id, empresas.nome AS empresa, vagas.nome AS vaga, vagas.descricao, vagas.local_vaga FROM matchs
                                         LEFT JOIN candidatos ON candidatos.id = matchs.id_candidato
                                         LEFT JOIN vagas ON vagas.id = matchs.id_vaga
@@ -36,7 +38,7 @@ class ModelMatch {
     List getMatchesEmpresa(Integer idVaga) {
         List vagas = []
 
-        connection.query('''
+        sql.query('''
                                     SELECT candidatos.nome, candidatos.email, candidatos.descricao FROM matchs
                                         LEFT JOIN candidatos ON candidatos.id = matchs.id_candidato
                                         WHERE id_vaga = ?;;
