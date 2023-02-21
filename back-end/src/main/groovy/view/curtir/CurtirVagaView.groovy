@@ -9,14 +9,14 @@ import utils.view.ClearConsole
 
 class CurtirVagaView {
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.sql).getId(empresa)
+    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     CurtirVagaView(Empresa empresa) {
         this.empresa = empresa
     }
 
     void menu() {
-        List vagas = new ModelVaga(DBConnection.sql).getAllVagasByEmpresaWithID(idEmpresa)
+        List vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresaWithID(idEmpresa)
 
         if (vagas.isEmpty()) {
             ClearConsole.clear()
@@ -34,7 +34,7 @@ class CurtirVagaView {
 
                 try {
                     Integer idVaga = sc.nextInt()
-                    boolean verifyVaga = new ModelVaga(DBConnection.sql).verifyVagaID(empresa, idVaga)
+                    boolean verifyVaga = new ModelVaga(DBConnection.getDBConnection()).verifyVagaID(empresa, idVaga)
 
                     if (verifyVaga) {
                         ClearConsole.clear()
@@ -47,7 +47,7 @@ class CurtirVagaView {
     }
 
     private void curtir(Integer idVaga) {
-        List candidatos = new ModelVaga(DBConnection.sql).listarTodosCandidatosDisponiveisPorVaga(idVaga)
+        List candidatos = new ModelVaga(DBConnection.getDBConnection()).listarTodosCandidatosDisponiveisPorVaga(idVaga)
 
         if (candidatos.isEmpty()) {
             println "Você não tem candidatos para curtir nessa vaga, tente mais tarde."
@@ -67,8 +67,8 @@ class CurtirVagaView {
 
                     switch (option) {
                         case "1":
-                            new ModelCurtidasVagas(DBConnection.sql).curtiCandidato(idVaga, candidato.idCandidato)
-                            if (new ModelCurtidasVagas(DBConnection.sql).match(idVaga, candidato.idCandidato)) {
+                            new ModelCurtidasVagas(DBConnection.getDBConnection()).curtiCandidato(idVaga, candidato.idCandidato)
+                            if (new ModelCurtidasVagas(DBConnection.getDBConnection()).match(idVaga, candidato.idCandidato)) {
                                 println ""
                                 println "MATCH!"
                                 println ""

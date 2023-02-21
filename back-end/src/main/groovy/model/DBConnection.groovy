@@ -3,10 +3,16 @@ package model
 import groovy.sql.Sql
 
 class DBConnection {
-    static String url = "jdbc:postgresql://localhost/postgres"
-    static String user = "postgres"
-    static String password = "postgres"
-    static String driver = "org.postgresql.Driver"
+    static Sql connection = Sql.newInstance(
+            "jdbc:postgresql://localhost/postgres",
+            "postgres",
+            "postgres",
+            "org.postgresql.Driver"
+    )
 
-    static Sql sql = Sql.newInstance(url, user, password, driver)
+    private DBConnection(){}
+
+    static Sql getDBConnection() {
+        return connection
+    }
 }

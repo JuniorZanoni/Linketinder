@@ -10,14 +10,14 @@ import utils.view.ClearConsole
 class ListVagas {
 
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.sql).getId(empresa)
+    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     ListVagas(Empresa empresa) {
         this.empresa = empresa
     }
 
     void menu() {
-        List<Vaga> vagas = new ModelVaga(DBConnection.sql).getAllVagasByEmpresa(idEmpresa)
+        List<Vaga> vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresa(idEmpresa)
         if(vagas.isEmpty()) {
             ClearConsole.clear()
             println "Não existem vagas cadastradas."

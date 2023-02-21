@@ -11,7 +11,7 @@ import view.empresa.vaga.ListVagas
 class EditVaga {
 
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.sql).getId(empresa)
+    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     EditVaga(Empresa empresa) {
         this.empresa = empresa
@@ -26,7 +26,7 @@ class EditVaga {
             Scanner sc = new Scanner(System.in)
             String idVaga = sc.nextLine()
 
-            List<Vaga> vagas = new ModelVaga(DBConnection.sql).getAllVagasByEmpresa(idEmpresa)
+            List<Vaga> vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresa(idEmpresa)
 
             try {
                 ClearConsole.clear()

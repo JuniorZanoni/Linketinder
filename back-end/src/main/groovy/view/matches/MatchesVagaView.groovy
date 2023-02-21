@@ -9,14 +9,14 @@ import utils.view.ClearConsole
 
 class MatchesVagaView {
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.sql).getId(empresa)
+    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     MatchesVagaView (Empresa empresa) {
         this.empresa = empresa
     }
 
     void menu() {
-        List vagas = new ModelVaga(DBConnection.sql).getAllVagasByEmpresaWithID(idEmpresa)
+        List vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresaWithID(idEmpresa)
 
         if (vagas.isEmpty()) {
             println "Não existem vagas cadastradas."
@@ -32,7 +32,7 @@ class MatchesVagaView {
 
                 try {
                     Integer idVaga = sc.nextInt()
-                    boolean verifyVaga = new ModelVaga(DBConnection.sql).verifyVagaID(empresa, idVaga)
+                    boolean verifyVaga = new ModelVaga(DBConnection.getDBConnection()).verifyVagaID(empresa, idVaga)
 
                     if (verifyVaga) {
                         ClearConsole.clear()
@@ -46,7 +46,7 @@ class MatchesVagaView {
 
     private void matches(Integer idVaga) {
         ClearConsole.clear()
-        List candidatos = new ModelMatch(DBConnection.sql).getMatchesEmpresa(idVaga)
+        List candidatos = new ModelMatch(DBConnection.getDBConnection()).getMatchesEmpresa(idVaga)
 
         if (candidatos.size() > 0) {
             candidatos.forEach(candidato -> {

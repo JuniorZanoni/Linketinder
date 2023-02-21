@@ -18,7 +18,7 @@ class RegisterEmpresa {
         String password = new Input().create(Regex.senha, "Digite a sua password.")
 
         Empresa empresa = new Empresa(name, email, cnpj, description, country, cep, password)
-        new ModelEmpresa(DBConnection.sql).save(empresa)
+        new ModelEmpresa(DBConnection.getDBConnection()).save(empresa)
     }
 
 }

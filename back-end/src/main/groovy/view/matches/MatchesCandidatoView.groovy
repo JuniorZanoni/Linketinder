@@ -14,7 +14,7 @@ class MatchesCandidatoView {
 
     void menu() {
         ClearConsole.clear()
-        List vagas = new ModelMatch(DBConnection.sql).getMatchesCandidato(candidato)
+        List vagas = new ModelMatch(DBConnection.getDBConnection()).getMatchesCandidato(candidato)
 
         if (vagas.isEmpty()) {
             ClearConsole.clear()

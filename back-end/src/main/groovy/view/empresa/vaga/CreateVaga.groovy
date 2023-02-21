@@ -15,7 +15,7 @@ import view.competencia.Competencia
 class CreateVaga {
 
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.sql).getId(empresa)
+    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     CreateVaga(Empresa empresa) {
         this.empresa = empresa
@@ -27,10 +27,10 @@ class CreateVaga {
         String local = Input.create(Regex.descricao, "Digite o local da vaga.")
 
         Vaga vaga = new Vaga(name, description, local)
-        new ModelVaga(DBConnection.sql).save(vaga, idEmpresa)
+        new ModelVaga(DBConnection.getDBConnection()).save(vaga, idEmpresa)
 
         ClearConsole.clear()
-        Integer idVaga = new ModelVaga(DBConnection.sql).getId(vaga, idEmpresa)
-        Competencia.menu(idVaga, new ModelCompetenciaVaga(DBConnection.sql))
+        Integer idVaga = new ModelVaga(DBConnection.getDBConnection()).getId(vaga, idEmpresa)
+        Competencia.menu(idVaga, new ModelCompetenciaVaga(DBConnection.getDBConnection()))
     }
 }

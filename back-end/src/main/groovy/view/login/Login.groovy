@@ -16,8 +16,8 @@ class Login {
         String email = new Input().create(Regex.email, "Digite o seu email.")
         String password = new Input().create(Regex.senha, "Digite a sua senha.")
 
-        Candidato candidato = new ModelCandidato(DBConnection.sql).getCandidato(email, password)
-        Empresa empresa = new ModelEmpresa(DBConnection.sql).getEmpresa(email, password)
+        Candidato candidato = new ModelCandidato(DBConnection.getDBConnection()).getCandidato(email, password)
+        Empresa empresa = new ModelEmpresa(DBConnection.getDBConnection()).getEmpresa(email, password)
 
         if(candidato) {
             ClearConsole.clear()

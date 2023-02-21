@@ -29,11 +29,11 @@ class RegisterCandidato {
         String password = new Input().create(Regex.senha, "Digite a sua senha.")
 
         Candidato candidato = new Candidato(name, lastName, cpf, email, dateOfBirth, country, cep, description, password)
-        new ModelCandidato(DBConnection.sql).save(candidato)
+        new ModelCandidato(DBConnection.getDBConnection()).save(candidato)
 
         ClearConsole.clear()
-        Integer idCandidato = new ModelCandidato(DBConnection.sql).getId(candidato)
-        Competencia.menu(idCandidato, new ModelCompetenciaCandidato(DBConnection.sql))
+        Integer idCandidato = new ModelCandidato(DBConnection.getDBConnection()).getId(candidato)
+        Competencia.menu(idCandidato, new ModelCompetenciaCandidato(DBConnection.getDBConnection()))
     }
 
 }

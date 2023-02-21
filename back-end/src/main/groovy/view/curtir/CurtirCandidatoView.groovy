@@ -14,7 +14,7 @@ class CurtirCandidatoView {
     }
 
     void menu() {
-        List vagas = new ModelVaga(DBConnection.sql).listarTodasVagasDisponiveisPorCandidato(candidato)
+        List vagas = new ModelVaga(DBConnection.getDBConnection()).listarTodasVagasDisponiveisPorCandidato(candidato)
 
         if(vagas.isEmpty()) {
             ClearConsole.clear()
@@ -37,8 +37,8 @@ class CurtirCandidatoView {
 
                     switch (option) {
                         case "1":
-                            new ModelCurtidasCandidatos(DBConnection.sql).curtiVaga((Integer) vaga.idVaga, candidato)
-                            Boolean match = verifyMatch(new ModelCurtidasCandidatos(DBConnection.sql).match((Integer) vaga.idVaga, candidato))
+                            new ModelCurtidasCandidatos(DBConnection.getDBConnection()).curtiVaga((Integer) vaga.idVaga, candidato)
+                            Boolean match = verifyMatch(new ModelCurtidasCandidatos(DBConnection.getDBConnection()).match((Integer) vaga.idVaga, candidato))
                             verifyMatch(match)
                             condicao = false
                             ClearConsole.clear()

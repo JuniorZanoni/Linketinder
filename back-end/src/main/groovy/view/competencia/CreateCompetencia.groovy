@@ -13,7 +13,7 @@ class CreateCompetencia {
         String skill = Input.create(Regex.competencia, "Digite o nome da competência.")
         Competencia competencia = new Competencia(skill)
 
-        new ModelCompetencia(DBConnection.sql).save(competencia)
+        new ModelCompetencia(DBConnection.getDBConnection()).save(competencia)
         ClearConsole.clear()
     }
 
