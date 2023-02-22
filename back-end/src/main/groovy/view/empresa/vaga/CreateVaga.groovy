@@ -1,9 +1,8 @@
 package view.empresa.vaga
 
 import model.DBConnection
-import model.ModelEmpresa
+import model.DAOEmpresa
 import model.ModelVaga
-import model.modelCompetencia.ModelCompetenciaCandidato
 import model.modelCompetencia.ModelCompetenciaVaga
 import service.user.empresa.Empresa
 import service.vaga.Vaga
@@ -15,7 +14,7 @@ import view.competencia.Competencia
 class CreateVaga {
 
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     CreateVaga(Empresa empresa) {
         this.empresa = empresa

@@ -1,7 +1,7 @@
 package view.empresa.vaga.editVaga
 
 import model.DBConnection
-import model.ModelEmpresa
+import model.DAOEmpresa
 import model.ModelVaga
 import service.user.empresa.Empresa
 import service.vaga.Vaga
@@ -11,7 +11,7 @@ import view.empresa.vaga.ListVagas
 class EditVaga {
 
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     EditVaga(Empresa empresa) {
         this.empresa = empresa

@@ -1,8 +1,8 @@
 package view.login
 
 import model.DBConnection
-import model.ModelCandidato
-import model.ModelEmpresa
+import model.DAOCandidato
+import model.DAOEmpresa
 import service.user.candidato.Candidato
 import service.user.empresa.Empresa
 import utils.service.Regex
@@ -16,8 +16,8 @@ class Login {
         String email = new Input().create(Regex.email, "Digite o seu email.")
         String password = new Input().create(Regex.senha, "Digite a sua senha.")
 
-        Candidato candidato = new ModelCandidato(DBConnection.getDBConnection()).getCandidato(email, password)
-        Empresa empresa = new ModelEmpresa(DBConnection.getDBConnection()).getEmpresa(email, password)
+        Candidato candidato = new DAOCandidato(DBConnection.getDBConnection()).getCandidato(email, password)
+        Empresa empresa = new DAOEmpresa(DBConnection.getDBConnection()).getEmpresa(email, password)
 
         if(candidato) {
             ClearConsole.clear()

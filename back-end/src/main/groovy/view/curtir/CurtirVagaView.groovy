@@ -1,7 +1,7 @@
 package view.curtir
 
 import model.DBConnection
-import model.ModelEmpresa
+import model.DAOEmpresa
 import model.ModelVaga
 import model.modelCurtidas.ModelCurtidasVagas
 import service.user.empresa.Empresa
@@ -9,7 +9,7 @@ import utils.view.ClearConsole
 
 class CurtirVagaView {
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     CurtirVagaView(Empresa empresa) {
         this.empresa = empresa

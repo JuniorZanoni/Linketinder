@@ -1,12 +1,10 @@
 package view.register
 
-import model.DBConnection
-import model.ModelEmpresa
-import service.user.empresa.Empresa
+import controller.ConstrollerEmpresa
 import utils.service.Regex
 import utils.view.Input
 
-class RegisterEmpresa {
+class RegisterEmpresaView {
 
     static void menu() {
         String name = Input.create(Regex.nomeEmpresa, "Digite o nome da empresa.")
@@ -17,8 +15,16 @@ class RegisterEmpresa {
         String cep = new Input().create(Regex.cep, "Digite o CEP da empresa.")
         String password = new Input().create(Regex.senha, "Digite a sua password.")
 
-        Empresa empresa = new Empresa(name, email, cnpj, description, country, cep, password)
-        new ModelEmpresa(DBConnection.getDBConnection()).save(empresa)
-    }
+        Map<String, String> empresaBO = [
+                name: name,
+                email: email,
+                cnpj: cnpj,
+                country: country,
+                cep: cep,
+                description: description,
+                password: password
+        ]
 
+        new ConstrollerEmpresa().save(empresaBO)
+    }
 }

@@ -2,7 +2,7 @@ package view.register
 
 import utils.view.ClearConsole
 
-class Register {
+class RegisterView {
     static void menu() {
         boolean condition = true
         while (condition) {
@@ -18,10 +18,10 @@ class Register {
                     condition = false
                     break
                 case "1":
-                    RegisterCandidato.menu()
+                    RegisterCandidatoView.menu()
                     break
                 case "2":
-                    RegisterEmpresa.menu()
+                    RegisterEmpresaView.menu()
                     break
             }
         }

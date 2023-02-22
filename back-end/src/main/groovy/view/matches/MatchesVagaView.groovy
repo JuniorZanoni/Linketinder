@@ -1,7 +1,7 @@
 package view.matches
 
 import model.DBConnection
-import model.ModelEmpresa
+import model.DAOEmpresa
 import model.ModelMatch
 import model.ModelVaga
 import service.user.empresa.Empresa
@@ -9,7 +9,7 @@ import utils.view.ClearConsole
 
 class MatchesVagaView {
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     MatchesVagaView (Empresa empresa) {
         this.empresa = empresa

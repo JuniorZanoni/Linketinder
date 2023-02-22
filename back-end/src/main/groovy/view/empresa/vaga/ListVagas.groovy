@@ -1,7 +1,7 @@
 package view.empresa.vaga
 
 import model.DBConnection
-import model.ModelEmpresa
+import model.DAOEmpresa
 import model.ModelVaga
 import service.user.empresa.Empresa
 import service.vaga.Vaga
@@ -10,7 +10,7 @@ import utils.view.ClearConsole
 class ListVagas {
 
     Empresa empresa
-    Integer idEmpresa = new ModelEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
 
     ListVagas(Empresa empresa) {
         this.empresa = empresa

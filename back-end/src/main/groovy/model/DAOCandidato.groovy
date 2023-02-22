@@ -3,13 +3,25 @@ package model
 import service.user.candidato.Candidato
 import groovy.sql.Sql
 
-import java.sql.Connection
+class DAOCandidato {
+    Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
-class ModelCandidato {
-    Sql sql
-
-    ModelCandidato(Connection connection) {
-        this.sql = Sql.newInstance(connection)
+    boolean save(Candidato candidato) {
+        return sql.execute('''
+            INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
+                            VALUES (?,?,?,?,?,?,?,?,?)''',
+                [
+                        candidato.name,
+                        candidato.lastname,
+                        candidato.dateOfBirth,
+                        candidato.email,
+                        candidato.cpf,
+                        candidato.country,
+                        candidato.cep,
+                        candidato.description,
+                        candidato.password
+                ]
+        )
     }
 
     Integer getId(Candidato candidato) {
@@ -44,24 +56,6 @@ class ModelCandidato {
         }
 
         return candidato
-    }
-
-    void save(Candidato candidato) {
-        sql.execute('''
-            INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
-                            VALUES (?,?,?,?,?,?,?,?,?)''',
-                [
-                        candidato.name,
-                        candidato.lastname,
-                        candidato.dateOfBirth,
-                        candidato.email,
-                        candidato.cpf,
-                        candidato.country,
-                        candidato.cep,
-                        candidato.description,
-                        candidato.password
-                ]
-        )
     }
 
     void delete(Candidato candidato) {

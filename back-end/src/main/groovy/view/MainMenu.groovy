@@ -2,9 +2,9 @@ package view
 
 import utils.view.ClearConsole
 import view.login.Login
-import view.register.Register
+import view.register.RegisterView
 
-class MenuMain {
+class MainMenu {
     static void main(String[] args) {
         boolean condition = true
         while (condition) {
@@ -20,7 +20,7 @@ class MenuMain {
                     condition = false
                     break
                 case "1":
-                    Register.menu()
+                    RegisterView.menu()
                     break
                 case "2":
                     Login.menu()
