@@ -1,17 +1,14 @@
-package model.modelCompetencia
+package model.competencia
 
 import groovy.sql.Sql
+import model.DBConnection
 import service.competencia.Competencia
 
 import java.sql.Connection
 
-class ModelCompetenciaVaga implements IModelCompetencia{
+class DAOCompetenciaVaga implements IDAOCompetencia{
 
-    Sql sql
-
-    ModelCompetenciaVaga(Connection connection) {
-        this.sql = Sql.newInstance(connection)
-    }
+    Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
     List<Competencia> getCompetencias(Integer idVaga) {
         List competencias = []
@@ -46,12 +43,12 @@ class ModelCompetenciaVaga implements IModelCompetencia{
         return competencias
     }
 
-    void saveCompetecia(Integer idVaga, Integer idCompetencia) {
+    void add(Integer idVaga, Integer idCompetencia) {
        sql.execute('''INSERT INTO vagas_competencias (id_vaga, id_competencia) VALUES (?, ?)''',
                 [idVaga, idCompetencia])
     }
 
-    void deleteCompetecia(Integer idVaga, Integer idCompetencia) {
+    void remove(Integer idVaga, Integer idCompetencia) {
        sql.execute('''DELETE FROM vagas_competencias 
                                     WHERE id_vaga = ? AND id_competencia = ?;''',
                 [idVaga, idCompetencia])

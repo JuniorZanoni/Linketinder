@@ -1,9 +1,9 @@
 package view.empresa.vaga.editVaga
 
 import model.DBConnection
-import model.DAOEmpresa
+import model.empresa.DAOEmpresa
 import model.ModelVaga
-import service.user.empresa.Empresa
+import service.user.Empresa
 import service.vaga.Vaga
 import utils.view.ClearConsole
 import view.empresa.vaga.ListVagas

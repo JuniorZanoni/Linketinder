@@ -2,7 +2,7 @@ package view.matches
 
 import model.DBConnection
 import model.ModelMatch
-import service.user.candidato.Candidato
+import service.user.Candidato
 import utils.view.ClearConsole
 
 class MatchesCandidatoView {

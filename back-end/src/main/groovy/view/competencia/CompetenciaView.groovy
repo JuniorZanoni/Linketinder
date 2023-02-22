@@ -1,10 +1,9 @@
 package view.competencia
 
-import model.modelCompetencia.IModelCompetencia
 import utils.view.ClearConsole
 
-class Competencia {
-    static void menu(Integer id, IModelCompetencia Model) {
+class CompetenciaView {
+    static void menu(Integer idUser, String typeUser) {
 
         boolean condition = true
         while (condition) {
@@ -24,22 +23,22 @@ class Competencia {
                     break
                 case "1":
                     ClearConsole.clear()
-                    CreateCompetencia.menu()
+                    CreateCompetenciaView.menu()
                     println ""
                     break
                 case "2":
                     ClearConsole.clear()
-                    AddCompetencia.menu(id, Model)
+                    AddCompetenciaView.menu(idUser, typeUser)
                     println ""
                     break
                 case "3":
                     ClearConsole.clear()
-                    RemoveCompetencia.menu(id, Model)
+                    RemoveCompetenciaView.menu(idUser, typeUser)
                     println ""
                     break
                 case "4":
                     ClearConsole.clear()
-                    ListCompetencias.menu(id, Model)
+                    ListCompetenciasView.menu(idUser,typeUser)
                     println ""
                     break
                 default:

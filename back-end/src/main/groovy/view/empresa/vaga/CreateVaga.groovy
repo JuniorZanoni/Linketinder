@@ -1,15 +1,15 @@
 package view.empresa.vaga
 
 import model.DBConnection
-import model.DAOEmpresa
+import model.empresa.DAOEmpresa
 import model.ModelVaga
-import model.modelCompetencia.ModelCompetenciaVaga
-import service.user.empresa.Empresa
+import model.competencia.DAOCompetenciaVaga
+import service.user.Empresa
 import service.vaga.Vaga
 import utils.service.Regex
 import utils.view.ClearConsole
 import utils.view.Input
-import view.competencia.Competencia
+import view.competencia.CompetenciaView
 
 class CreateVaga {
 
@@ -30,6 +30,6 @@ class CreateVaga {
 
         ClearConsole.clear()
         Integer idVaga = new ModelVaga(DBConnection.getDBConnection()).getId(vaga, idEmpresa)
-        Competencia.menu(idVaga, new ModelCompetenciaVaga(DBConnection.getDBConnection()))
+        CompetenciaView.menu(idVaga, new DAOCompetenciaVaga(DBConnection.getDBConnection()))
     }
 }

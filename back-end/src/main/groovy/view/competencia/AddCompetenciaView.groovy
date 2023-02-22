@@ -1,15 +1,13 @@
 package view.competencia
 
-
-import model.modelCompetencia.IModelCompetencia
+import controller.ControllerCompetencia
 import service.competencia.Competencia
 import utils.view.ClearConsole
 
-class AddCompetencia {
+class AddCompetenciaView {
 
-    static void menu(Integer id, IModelCompetencia Model) {
-        List competenciasNotUser = Model.getCompetenciasNoHave(id)
-        List competenciasNotUserBO = Competencia.convertListInBO(competenciasNotUser)
+    static void menu(Integer idUser, String typeUser) {
+        List<Map<String, String>> competenciasNotUserBO = ControllerCompetencia.getCompetenciasNoHave(idUser)
 
         ClearConsole.clear()
 
@@ -17,14 +15,20 @@ class AddCompetencia {
         while (condition) {
             println "Digite o número da competência que deseja adicionar."
             println ""
-            competenciasNotUserBO.forEach { e -> println "${e.id} - ${e.name}"}
+            competenciasNotUserBO.forEach { competencia -> println "${competencia.id} - ${competencia.name}"}
             println ""
 
             Scanner sc = new Scanner(System.in)
-
             String idCompetencia = sc.nextLine()
+
             if(Competencia.checkExistsInList(competenciasNotUserBO, idCompetencia)) {
-                Model.saveCompetecia(id, idCompetencia.toInteger())
+                switch (typeUser) {
+                    case "candidato": ControllerCompetencia.addCompetenciaCandidato(idUser, idCompetencia.toInteger())
+                        break
+                    case "vaga": println "vaga"
+                        break
+                }
+
                 condition = false
                 ClearConsole.clear()
             } else {

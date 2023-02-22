@@ -1,6 +1,6 @@
 package view.empresa
 
-import service.user.empresa.Empresa
+import service.user.Empresa
 import utils.view.ClearConsole
 import view.empresa.vaga.VagaView
 

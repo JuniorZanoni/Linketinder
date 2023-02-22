@@ -1,8 +1,8 @@
 package model
 
 import groovy.sql.Sql
-import service.user.candidato.Candidato
-import service.user.empresa.Empresa
+import service.user.Candidato
+import service.user.Empresa
 import service.vaga.Vaga
 
 import java.sql.Connection

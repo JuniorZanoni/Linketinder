@@ -1,15 +1,15 @@
 package view.candidato
 
 import model.DBConnection
-import model.DAOCandidato
-import model.modelCompetencia.ModelCompetenciaCandidato
-import service.user.candidato.Candidato
+import model.candidato.DAOCandidato
+import model.competencia.DAOCompetenciaCandidato
+import service.user.Candidato
 import utils.service.Regex
 import utils.view.ClearConsole
 import utils.view.Input
 import view.MainMenu
 import utils.service.ConvertStringInLocalDate
-import view.competencia.Competencia
+import view.competencia.CompetenciaView
 
 class EditCandidato {
     Candidato candidato
@@ -92,7 +92,7 @@ class EditCandidato {
                     break
                 case "11":
                     ClearConsole.clear()
-                    Competencia.menu(idCandidato, new ModelCompetenciaCandidato(DBConnection.getDBConnection()))
+                    CompetenciaView.menu(idCandidato, new DAOCompetenciaCandidato(DBConnection.getDBConnection()))
                     break
                 case "0":
                     ClearConsole.clear()

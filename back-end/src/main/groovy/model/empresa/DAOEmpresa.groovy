@@ -1,6 +1,7 @@
-package model
+package model.empresa
 
-import service.user.empresa.Empresa
+import model.DBConnection
+import service.user.Empresa
 import groovy.sql.Sql
 
 class DAOEmpresa {

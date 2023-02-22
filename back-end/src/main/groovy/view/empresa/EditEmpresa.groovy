@@ -1,8 +1,8 @@
 package view.empresa
 
 import model.DBConnection
-import model.DAOEmpresa
-import service.user.empresa.Empresa
+import model.empresa.DAOEmpresa
+import service.user.Empresa
 import utils.service.Regex
 import utils.view.ClearConsole
 import utils.view.Input

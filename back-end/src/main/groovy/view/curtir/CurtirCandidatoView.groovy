@@ -3,7 +3,7 @@ package view.curtir
 import model.DBConnection
 import model.ModelVaga
 import model.modelCurtidas.ModelCurtidasCandidatos
-import service.user.candidato.Candidato
+import service.user.Candidato
 import utils.view.ClearConsole
 
 class CurtirCandidatoView {

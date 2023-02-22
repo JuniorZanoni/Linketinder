@@ -1,6 +1,6 @@
-package service.user.empresa
+package service.user
 
-class Empresa {
+class Empresa extends User{
     String nome, email, cnpj, descricao, pais, cep, senha
 
     Empresa(String nome, String email, String cnpj, String descricao, String pais, String cep, String senha) {

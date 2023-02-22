@@ -1,9 +1,11 @@
 package view.register
 
 import controller.ControllerCandidato
+import model.competencia.DAOCompetenciaCandidato
 import utils.view.ClearConsole
 import utils.service.Regex
 import utils.view.Input
+import view.competencia.CompetenciaView
 
 class RegisterCandidatoView {
 
@@ -30,11 +32,10 @@ class RegisterCandidatoView {
                 password: password
         ]
 
-        new ControllerCandidato().save(candidatoBO)
+        Integer idCandidato = new ControllerCandidato().save(candidatoBO)
 
         ClearConsole.clear()
-//        Integer idCandidato = new ModelCandidato(DBConnection.getDBConnection()).getId(candidato)
-//        Competencia.menu(idCandidato, new ModelCompetenciaCandidato(DBConnection.getDBConnection()))
+        CompetenciaView.menu(idCandidato, "candidato")
     }
 
 }

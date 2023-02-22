@@ -1,8 +1,8 @@
-package service.user.candidato
+package service.user
 
 import java.time.LocalDate
 
-class Candidato {
+class Candidato extends User{
     String name, lastname, cpf, email, country, cep, description, password
     LocalDate dateOfBirth
 

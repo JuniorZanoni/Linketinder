@@ -1,7 +1,7 @@
 package view
 
 import utils.view.ClearConsole
-import view.login.Login
+import view.login.LoginView
 import view.register.RegisterView
 
 class MainMenu {
@@ -23,7 +23,7 @@ class MainMenu {
                     RegisterView.menu()
                     break
                 case "2":
-                    Login.menu()
+                    LoginView.menu()
                     break
             }
         }

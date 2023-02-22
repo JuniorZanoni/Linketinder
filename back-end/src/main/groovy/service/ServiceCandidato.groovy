@@ -1,13 +1,13 @@
 package service
 
-import model.DAOCandidato
-import service.user.candidato.Candidato
+import model.candidato.DAOCandidato
+import service.user.Candidato
 import utils.service.ConvertStringInLocalDate
 
 import java.time.LocalDate
 
 class ServiceCandidato {
-    static boolean save(Map<String, String> candidatoBO) {
+    static Integer save(Map<String, String> candidatoBO) {
         LocalDate dateOfBirth = ConvertStringInLocalDate.convert(candidatoBO.dateOfBirthString)
 
         Candidato candidato = new Candidato(

@@ -2,12 +2,12 @@ package view.empresa.vaga.editVaga
 
 import model.DBConnection
 import model.ModelVaga
-import model.modelCompetencia.ModelCompetenciaVaga
+import model.competencia.DAOCompetenciaVaga
 import service.vaga.Vaga
 import utils.service.Regex
 import utils.view.ClearConsole
 import utils.view.Input
-import view.competencia.Competencia
+import view.competencia.CompetenciaView
 
 class EditVagaOptions {
     Vaga vaga
@@ -53,7 +53,7 @@ class EditVagaOptions {
                     break
                 case "4":
                     ClearConsole.clear()
-                    Competencia.menu(idVaga, new ModelCompetenciaVaga(DBConnection.getDBConnection()))
+                    CompetenciaView.menu(idVaga, new DAOCompetenciaVaga(DBConnection.getDBConnection()))
                     break
                 case "5":
                     ClearConsole.clear()

@@ -1,7 +1,7 @@
 package model.modelCurtidas
 
 import groovy.sql.Sql
-import service.user.candidato.Candidato
+import service.user.Candidato
 
 import java.sql.Connection
 

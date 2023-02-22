@@ -1,6 +1,6 @@
 package view.candidato
 
-import service.user.candidato.Candidato
+import service.user.Candidato
 import view.curtir.CurtirCandidatoView
 import view.matches.MatchesCandidatoView
 

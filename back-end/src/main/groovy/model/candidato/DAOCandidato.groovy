@@ -1,13 +1,14 @@
-package model
+package model.candidato
 
-import service.user.candidato.Candidato
+import model.DBConnection
+import service.user.Candidato
 import groovy.sql.Sql
 
 class DAOCandidato {
     Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
-    boolean save(Candidato candidato) {
-        return sql.execute('''
+    Integer save(Candidato candidato) {
+        sql.execute('''
             INSERT INTO candidatos (nome, sobrenome, data_de_nascimento, email, cpf, pais, cep, descricao, senha)
                             VALUES (?,?,?,?,?,?,?,?,?)''',
                 [
@@ -22,6 +23,8 @@ class DAOCandidato {
                         candidato.password
                 ]
         )
+
+        return getId(candidato)
     }
 
     Integer getId(Candidato candidato) {

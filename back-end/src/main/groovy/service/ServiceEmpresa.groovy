@@ -1,7 +1,7 @@
 package service
 
-import model.DAOEmpresa
-import service.user.empresa.Empresa
+import model.empresa.DAOEmpresa
+import service.user.Empresa
 
 class ServiceEmpresa {
     static boolean save(Map<String, String> empresaBO) {

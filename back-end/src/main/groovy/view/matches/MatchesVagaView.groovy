@@ -1,10 +1,10 @@
 package view.matches
 
 import model.DBConnection
-import model.DAOEmpresa
+import model.empresa.DAOEmpresa
 import model.ModelMatch
 import model.ModelVaga
-import service.user.empresa.Empresa
+import service.user.Empresa
 import utils.view.ClearConsole
 
 class MatchesVagaView {

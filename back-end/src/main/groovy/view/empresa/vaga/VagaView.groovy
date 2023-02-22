@@ -1,8 +1,7 @@
 package view.empresa.vaga
 
-import service.user.empresa.Empresa
+import service.user.Empresa
 import utils.view.ClearConsole
-import view.curtir.CurtirCandidatoView
 import view.curtir.CurtirVagaView
 import view.empresa.vaga.editVaga.EditVaga
 import view.matches.MatchesVagaView

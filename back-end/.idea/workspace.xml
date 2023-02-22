@@ -6,20 +6,42 @@
   <component name="ChangeListManager">
     <list default="true" id="9cacfbda-70fd-4411-a10f-315366762c15" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/ModelCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOCandidato.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/ModelEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOEmpresa.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/MenuMain.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/MainMenu.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/controller/ControllerCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/controller/ControllerCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/DAOCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/candidato/DAOCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/DAOEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/empresa/DAOEmpresa.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/ModelMatch.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/ModelMatch.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/ModelVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/ModelVaga.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCompetencia/IModelCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/IDAOCompetencia.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCompetencia/ModelCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetencia.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCompetencia/ModelCompetenciaCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetenciaCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCompetencia/ModelCompetenciaVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetenciaVaga.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCurtidas/ModelCurtidasCandidatos.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/modelCurtidas/ModelCurtidasCandidatos.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceEmpresa.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/user/User.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/user/candidato/Candidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/user/Candidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/user/empresa/Empresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/user/Empresa.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/MainMenu.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/MainMenu.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/candidato/CandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/candidato/CandidatoView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/candidato/EditCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/candidato/EditCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/AddCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/AddCompetenciaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/Competencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/CompetenciaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/CreateCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/CreateCompetenciaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/ListCompetencias.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/ListCompetenciasView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/RemoveCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/RemoveCompetenciaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirCandidatoView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirVagaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirVagaView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/EditEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/EditEmpresa.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/EmpresaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/EmpresaView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/CreateVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/CreateVaga.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/ListVagas.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/ListVagas.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/VagaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/VagaView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVaga.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/login/Login.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/login/Login.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVagaOptions.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVagaOptions.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/login/Login.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/login/LoginView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesCandidatoView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesVagaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesVagaView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/register/Register.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterCandidatoView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterEmpresaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterCandidatoView.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +89,7 @@
       <recent name="View.Utils" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainMenu">
+  <component name="RunManager" selected="Groovy.testess">
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainMenu" />
       <module name="back-end.main" />
@@ -80,29 +102,6 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
-    </configuration>
-    <configuration name="CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
     </configuration>
     <configuration name="Test (1)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
       <module name="back-end.main" />
@@ -137,13 +136,24 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="testess" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
+      <module name="back-end.main" />
+      <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/testess.groovy" />
+      <setting name="vmparams" value="" />
+      <setting name="params" value="" />
+      <setting name="workDir" value="file://$PROJECT_DIR$/src/main/groovy" />
+      <setting name="debug" value="false" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Groovy.testess" />
         <item itemvalue="Groovy.Teste" />
         <item itemvalue="Groovy.Test (1)" />
         <item itemvalue="Groovy.Testess" />
         <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Gradle.CompetenciaTest.deveRetornarTrueSeOIndexDoElementoExistirNaLista" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +171,7 @@
       <workItem from="1676979224821" duration="763000" />
       <workItem from="1676985506576" duration="1922000" />
       <workItem from="1676987482464" duration="5969000" />
-      <workItem from="1677059488707" duration="2607000" />
+      <workItem from="1677059488707" duration="10929000" />
     </task>
     <servers />
   </component>
