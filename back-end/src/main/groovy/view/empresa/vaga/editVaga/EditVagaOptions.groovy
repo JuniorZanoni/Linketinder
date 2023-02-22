@@ -1,8 +1,6 @@
 package view.empresa.vaga.editVaga
 
-import model.DBConnection
-import model.ModelVaga
-import model.competencia.DAOCompetenciaVaga
+import controller.ControllerVaga
 import service.vaga.Vaga
 import utils.service.Regex
 import utils.view.ClearConsole
@@ -12,7 +10,7 @@ import view.competencia.CompetenciaView
 class EditVagaOptions {
     Vaga vaga
     Integer idEmpresa
-    Integer idVaga = new ModelVaga(DBConnection.getDBConnection()).getId(vaga, idEmpresa)
+    Integer idVaga = ControllerVaga.getIdVaga(vaga, idEmpresa)
 
     EditVagaOptions(Vaga vaga, Integer idEmpresa) {
         this.vaga = vaga
@@ -36,28 +34,28 @@ class EditVagaOptions {
                 case "1":
                     ClearConsole.clear()
                     vaga.name = Input.create(Regex.descricao, "Digite o novo nome da vaga.")
-                    new ModelVaga(DBConnection.getDBConnection()).update(vaga, idVaga)
+                    ControllerVaga.update(vaga, idVaga)
                     ClearConsole.clear()
                     break
                 case "2":
                     ClearConsole.clear()
                     vaga.description = Input.create(Regex.descricao, "Digite a nova descrição da vaga.")
-                    new ModelVaga(DBConnection.getDBConnection()).update(vaga, idVaga)
+                    ControllerVaga.update(vaga, idVaga)
                     ClearConsole.clear()
                     break
                 case "3":
                     ClearConsole.clear()
                     vaga.local = Input.create(Regex.descricao, "Digite o novo local da vaga.")
-                    new ModelVaga(DBConnection.getDBConnection()).update(vaga, idVaga)
+                    ControllerVaga.update(vaga, idVaga)
                     ClearConsole.clear()
                     break
                 case "4":
                     ClearConsole.clear()
-                    CompetenciaView.menu(idVaga, new DAOCompetenciaVaga(DBConnection.getDBConnection()))
+                    CompetenciaView.menu(idVaga, "vaga")
                     break
                 case "5":
                     ClearConsole.clear()
-                    new ModelVaga(DBConnection.getDBConnection()).delete(idVaga)
+                    ControllerVaga.delete(idVaga)
                     condition = false
                     break
                 case "0":

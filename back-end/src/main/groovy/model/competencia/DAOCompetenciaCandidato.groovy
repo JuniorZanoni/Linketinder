@@ -8,8 +8,8 @@ class DAOCompetenciaCandidato implements IDAOCompetencia {
 
     Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
-    List<Map<String, String>> getCompetencias(Integer idCandidato) {
-        List<Map<String, String>> competencias = []
+    List<Map> getCompetencias(Integer idCandidato) {
+        List<Map> competencias = []
 
        sql.query('''SELECT id, competencia FROM competencias
                                 LEFT JOIN (SELECT * FROM candidatos_competencias WHERE id_candidato = 

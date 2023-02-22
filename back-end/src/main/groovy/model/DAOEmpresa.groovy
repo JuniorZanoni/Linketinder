@@ -1,4 +1,4 @@
-package model.empresa
+package model
 
 import model.DBConnection
 import service.user.Empresa
@@ -58,7 +58,7 @@ class DAOEmpresa {
     }
 
     Integer getId(Empresa empresa) {
-        Integer id = 0
+        Integer id = null
         sql.query('''
             SELECT id FROM empresas WHERE email = ?;''', [empresa.email]
         ) {resultSet ->
@@ -68,5 +68,4 @@ class DAOEmpresa {
 
         return id
     }
-
 }

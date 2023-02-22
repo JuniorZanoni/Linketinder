@@ -1,8 +1,8 @@
 package view.empresa.vaga.editVaga
 
-import model.DBConnection
-import model.empresa.DAOEmpresa
-import model.ModelVaga
+import controller.ControllerEmpresa
+import controller.ControllerVaga
+
 import service.user.Empresa
 import service.vaga.Vaga
 import utils.view.ClearConsole
@@ -11,7 +11,7 @@ import view.empresa.vaga.ListVagas
 class EditVaga {
 
     Empresa empresa
-    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = ControllerEmpresa.getId(empresa)
 
     EditVaga(Empresa empresa) {
         this.empresa = empresa
@@ -26,7 +26,7 @@ class EditVaga {
             Scanner sc = new Scanner(System.in)
             String idVaga = sc.nextLine()
 
-            List<Vaga> vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresa(idEmpresa)
+            List<Vaga> vagas = ControllerVaga.getVagasByEmpresa(idEmpresa)
 
             try {
                 ClearConsole.clear()

@@ -23,7 +23,7 @@ class CandidatoView {
 
             switch (sc.nextLine()) {
                 case "1":
-                    new EditCandidato(candidato).menu()
+                    new EditCandidatoView(candidato).menu()
                     break
                 case "2":
                     new CurtirCandidatoView(candidato).menu()

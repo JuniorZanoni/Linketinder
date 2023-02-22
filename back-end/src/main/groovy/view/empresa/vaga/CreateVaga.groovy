@@ -1,9 +1,7 @@
 package view.empresa.vaga
 
-import model.DBConnection
-import model.empresa.DAOEmpresa
-import model.ModelVaga
-import model.competencia.DAOCompetenciaVaga
+import controller.ControllerEmpresa
+import controller.ControllerVaga
 import service.user.Empresa
 import service.vaga.Vaga
 import utils.service.Regex
@@ -14,7 +12,7 @@ import view.competencia.CompetenciaView
 class CreateVaga {
 
     Empresa empresa
-    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = ControllerEmpresa.getId(empresa)
 
     CreateVaga(Empresa empresa) {
         this.empresa = empresa
@@ -26,10 +24,9 @@ class CreateVaga {
         String local = Input.create(Regex.descricao, "Digite o local da vaga.")
 
         Vaga vaga = new Vaga(name, description, local)
-        new ModelVaga(DBConnection.getDBConnection()).save(vaga, idEmpresa)
 
         ClearConsole.clear()
-        Integer idVaga = new ModelVaga(DBConnection.getDBConnection()).getId(vaga, idEmpresa)
-        CompetenciaView.menu(idVaga, new DAOCompetenciaVaga(DBConnection.getDBConnection()))
+        Integer idVaga = ControllerVaga.save(vaga, idEmpresa)
+        CompetenciaView.menu(idVaga, "vaga")
     }
 }

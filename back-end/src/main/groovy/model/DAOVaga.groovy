@@ -5,14 +5,8 @@ import service.user.Candidato
 import service.user.Empresa
 import service.vaga.Vaga
 
-import java.sql.Connection
-
-class ModelVaga {
-    Sql sql
-
-    ModelVaga(Connection connection) {
-        this.sql = Sql.newInstance(connection)
-    }
+class DAOVaga {
+    Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
     Integer getId(Vaga vaga, Integer idEmpresa) {
         Integer idVaga = null
@@ -27,7 +21,7 @@ class ModelVaga {
         return idVaga
     }
 
-    List<Vaga> getAllVagasByEmpresa(Integer idEmpresa) {
+    List<Vaga> getVagasByEmpresa(Integer idEmpresa) {
         List<Vaga> vagas = []
 
         sql.query('''SELECT vagas.nome, vagas.descricao, vagas.local_vaga FROM vagas
@@ -47,10 +41,12 @@ class ModelVaga {
         return vagas
     }
 
-    void save(Vaga vaga, Integer idEmpresa) {
+    Integer save(Vaga vaga, Integer idEmpresa) {
         sql.execute('''INSERT INTO vagas (id_empresa, nome, descricao, local_vaga) VALUES (?,?,?,?)''',
                 [idEmpresa, vaga.name, vaga.description, vaga.local]
         )
+
+        return getId(vaga, idEmpresa)
     }
 
     void update(Vaga vaga, Integer idVaga) {
@@ -63,9 +59,9 @@ class ModelVaga {
         sql.execute('''DELETE FROM vagas WHERE id = ?;''', [idVaga])
     }
 
-    List listarTodasVagasDisponiveisPorCandidato(Candidato candidato) {
+    List<Map> getVagasByCandidato(Candidato candidato) {
 
-        List vagas = []
+        List<Map> vagas = []
 
         sql.query('''SELECT * FROM vagas
                                         LEFT JOIN (SELECT * FROM curtidas_candidatos 
@@ -83,7 +79,7 @@ class ModelVaga {
         return vagas
     }
 
-    List listarTodosCandidatosDisponiveisPorVaga(Integer idVaga) {
+    List getCandidatosAvailableByVaga(Integer idVaga) {
 
         List vagas = []
 
@@ -102,9 +98,9 @@ class ModelVaga {
         return vagas
     }
 
-    List getAllVagasByEmpresaWithID(Integer idEmpresa) {
+    List<Map> getVagasByEmpresaWithID(Integer idEmpresa) {
 
-        List vagas = []
+        List<Map> vagas = []
 
         sql.query('''SELECT vagas.id, vagas.nome, vagas.descricao, vagas.local_vaga FROM vagas
                                         LEFT JOIN empresas ON vagas.id_empresa = empresas.id
@@ -121,7 +117,7 @@ class ModelVaga {
         return vagas
     }
 
-   String verifyVagaID(Empresa empresa, Integer idVaga) {
+    String verifyVagaID(Empresa empresa, Integer idVaga) {
         sql.firstRow('''SELECT vagas.id FROM vagas
                                 LEFT JOIN empresas ON vagas.id_empresa = empresas.id
                                 WHERE empresas.email = ? AND vagas.id = ?''', [empresa.email, idVaga])

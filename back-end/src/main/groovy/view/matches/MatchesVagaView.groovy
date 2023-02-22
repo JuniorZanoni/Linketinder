@@ -1,22 +1,24 @@
 package view.matches
 
+import controller.ControllerEmpresa
+import controller.ControllerMatch
+import controller.ControllerVaga
 import model.DBConnection
-import model.empresa.DAOEmpresa
-import model.ModelMatch
-import model.ModelVaga
+import model.DAOMatch
+import model.DAOVaga
 import service.user.Empresa
 import utils.view.ClearConsole
 
 class MatchesVagaView {
     Empresa empresa
-    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = ControllerEmpresa.getId(empresa)
 
     MatchesVagaView (Empresa empresa) {
         this.empresa = empresa
     }
 
     void menu() {
-        List vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresaWithID(idEmpresa)
+        List<Map> vagas = ControllerVaga.getVagasByEmpresaWithID(idEmpresa)
 
         if (vagas.isEmpty()) {
             println "Não existem vagas cadastradas."
@@ -32,21 +34,21 @@ class MatchesVagaView {
 
                 try {
                     Integer idVaga = sc.nextInt()
-                    boolean verifyVaga = new ModelVaga(DBConnection.getDBConnection()).verifyVagaID(empresa, idVaga)
+                    boolean verifyVaga = ControllerVaga.verifyVagaID(empresa, idVaga)
 
                     if (verifyVaga) {
                         ClearConsole.clear()
                         matches(idVaga)
                         condition = false
                     }
-                } catch (Exception e) {}
+                } catch (Exception ignored) {}
             }
         }
     }
 
     private void matches(Integer idVaga) {
         ClearConsole.clear()
-        List candidatos = new ModelMatch(DBConnection.getDBConnection()).getMatchesEmpresa(idVaga)
+        List candidatos = ControllerMatch.getMatchesVaga(idVaga)
 
         if (candidatos.size() > 0) {
             candidatos.forEach(candidato -> {

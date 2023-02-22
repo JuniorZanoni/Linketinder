@@ -13,7 +13,7 @@ class RemoveCompetenciaView {
                 competencias = ControllerCompetencia.getAllCompetenciasCandidato(idUser)
                 break
             case "vaga":
-                println "empresaaaaaaa"
+                competencias = ControllerCompetencia.getAllCompetenciasVaga(idUser)
                 break
         }
 
@@ -39,7 +39,7 @@ class RemoveCompetenciaView {
                             ControllerCompetencia.removeCompetenciaCandidato(idUser, idCompetencia.toInteger())
                             break
                         case "vaga":
-                            println "empresaaaaaaa"
+                            ControllerCompetencia.removeCompetenciaVaga(idUser, idCompetencia.toInteger())
                             break
                     }
 

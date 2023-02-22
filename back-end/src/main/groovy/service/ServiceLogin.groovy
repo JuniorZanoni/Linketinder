@@ -1,8 +1,8 @@
 package service
 
 
-import model.candidato.DAOCandidato
-import model.empresa.DAOEmpresa
+import model.DAOCandidato
+import model.DAOEmpresa
 import service.user.Candidato
 import service.user.Empresa
 import service.user.User

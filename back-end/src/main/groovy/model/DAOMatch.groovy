@@ -3,17 +3,11 @@ package model
 import groovy.sql.Sql
 import service.user.Candidato
 
-import java.sql.Connection
+class DAOMatch {
+    Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
-class ModelMatch {
-    Sql sql
-
-    ModelMatch(Connection connection) {
-        this.sql = Sql.newInstance(connection)
-    }
-
-    List getMatchesCandidato(Candidato candidato) {
-        List matches = []
+    List<Map> getMatchesCandidato(Candidato candidato) {
+        List<Map> matches = []
 
         sql.query('''
                                     SELECT vagas.id, empresas.nome AS empresa, vagas.nome AS vaga, vagas.descricao, vagas.local_vaga FROM matchs

@@ -1,8 +1,6 @@
 package view.candidato
 
-import model.DBConnection
-import model.candidato.DAOCandidato
-import model.competencia.DAOCompetenciaCandidato
+import controller.ControllerCandidato
 import service.user.Candidato
 import utils.service.Regex
 import utils.view.ClearConsole
@@ -11,11 +9,11 @@ import view.MainMenu
 import utils.service.ConvertStringInLocalDate
 import view.competencia.CompetenciaView
 
-class EditCandidato {
+class EditCandidatoView {
     Candidato candidato
-    Integer idCandidato = new DAOCandidato(DBConnection.getDBConnection()).getId(candidato)
+    Integer idCandidato = ControllerCandidato.getId(candidato)
 
-    EditCandidato(Candidato candidato) {
+    EditCandidatoView(Candidato candidato) {
         this.candidato = candidato
     }
 
@@ -41,58 +39,58 @@ class EditCandidato {
 
             switch (sc.nextLine()) {
                 case "1":
-                    new DAOCandidato(DBConnection.getDBConnection()).delete(candidato)
+                    ControllerCandidato.delete(candidato)
                     ClearConsole.clear()
                     MainMenu.main()
                     break
                 case "2":
                     String name = Input.create(Regex.nome, "Digite o novo nome.")
                     candidato.name = name
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "3":
                     String lastname = Input.create(Regex.sobrenome, "Digite o novo sobrenome.")
                     candidato.lastname = lastname
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "4":
                     String dateOfBirth = Input.create(Regex.dataDeNascimento, "Digite a nova data de nascimento no formato dd/mm/aaaa.")
                     candidato.dateOfBirth = ConvertStringInLocalDate.convert(dateOfBirth)
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "5":
                     String email = Input.create(Regex.email, "Digite o novo e-mail.")
                     candidato.email = email
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "6":
                     String cpf = Input.create(Regex.cpf, "Digite o novo CPF.")
                     candidato.cpf = cpf
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "7":
                     String country = Input.create(Regex.pais, "Digite o novo país.")
                     candidato.country = country
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "8":
                     String cep = Input.create(Regex.cep, "Digite o novo CEP.")
                     candidato.cep = cep
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "9":
                     String description = Input.create(Regex.descricao, "Digite a nova descrição.")
                     candidato.description = description
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "10":
                     String password = Input.create(Regex.senha, "Digite a nova senha.")
                     candidato.password = password
-                    new DAOCandidato(DBConnection.getDBConnection()).update(candidato, idCandidato)
+                    ControllerCandidato.update(candidato, idCandidato)
                     break
                 case "11":
                     ClearConsole.clear()
-                    CompetenciaView.menu(idCandidato, new DAOCompetenciaCandidato(DBConnection.getDBConnection()))
+                    CompetenciaView.menu(idCandidato, "candidato")
                     break
                 case "0":
                     ClearConsole.clear()

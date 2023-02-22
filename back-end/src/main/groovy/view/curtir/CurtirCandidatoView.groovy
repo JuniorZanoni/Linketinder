@@ -1,8 +1,8 @@
 package view.curtir
 
-import model.DBConnection
-import model.ModelVaga
-import model.modelCurtidas.ModelCurtidasCandidatos
+import controller.ControllerCurtir
+import controller.ControllerMatch
+import controller.ControllerVaga
 import service.user.Candidato
 import utils.view.ClearConsole
 
@@ -14,7 +14,7 @@ class CurtirCandidatoView {
     }
 
     void menu() {
-        List vagas = new ModelVaga(DBConnection.getDBConnection()).listarTodasVagasDisponiveisPorCandidato(candidato)
+        List vagas = ControllerVaga.getVagasByCandidato(candidato)
 
         if(vagas.isEmpty()) {
             ClearConsole.clear()
@@ -37,8 +37,8 @@ class CurtirCandidatoView {
 
                     switch (option) {
                         case "1":
-                            new ModelCurtidasCandidatos(DBConnection.getDBConnection()).curtiVaga((Integer) vaga.idVaga, candidato)
-                            Boolean match = verifyMatch(new ModelCurtidasCandidatos(DBConnection.getDBConnection()).match((Integer) vaga.idVaga, candidato))
+                            ControllerCurtir.curtirVaga(vaga.idVaga, candidato)
+                            Boolean match = ControllerMatch.matchCandidatoWithVaga((Integer) vaga.idVaga, candidato)
                             verifyMatch(match)
                             condicao = false
                             ClearConsole.clear()

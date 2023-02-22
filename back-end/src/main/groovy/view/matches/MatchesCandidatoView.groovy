@@ -1,7 +1,6 @@
 package view.matches
 
-import model.DBConnection
-import model.ModelMatch
+import controller.ControllerMatch
 import service.user.Candidato
 import utils.view.ClearConsole
 
@@ -14,7 +13,7 @@ class MatchesCandidatoView {
 
     void menu() {
         ClearConsole.clear()
-        List vagas = new ModelMatch(DBConnection.getDBConnection()).getMatchesCandidato(candidato)
+        List<Map> vagas = ControllerMatch.getMatchesCandidato(candidato)
 
         if (vagas.isEmpty()) {
             ClearConsole.clear()

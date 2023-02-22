@@ -7,7 +7,13 @@ import utils.view.ClearConsole
 class AddCompetenciaView {
 
     static void menu(Integer idUser, String typeUser) {
-        List<Map<String, String>> competenciasNotUserBO = ControllerCompetencia.getCompetenciasNoHave(idUser)
+        List<Map<String, String>> competenciasNotUserBO
+
+        if(typeUser == "candidato") {
+            competenciasNotUserBO = ControllerCompetencia.getCompetenciasNoHaveCandidato(idUser)
+        } else {
+            competenciasNotUserBO = ControllerCompetencia.getCompetenciasNoHaveVaga(idUser)
+        }
 
         ClearConsole.clear()
 
@@ -25,7 +31,7 @@ class AddCompetenciaView {
                 switch (typeUser) {
                     case "candidato": ControllerCompetencia.addCompetenciaCandidato(idUser, idCompetencia.toInteger())
                         break
-                    case "vaga": println "vaga"
+                    case "vaga": ControllerCompetencia.addCompetenciaVaga(idUser, idCompetencia.toInteger())
                         break
                 }
 

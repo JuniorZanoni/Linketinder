@@ -1,8 +1,10 @@
 package view.empresa.vaga
 
+import controller.ControllerEmpresa
+import controller.ControllerVaga
 import model.DBConnection
-import model.empresa.DAOEmpresa
-import model.ModelVaga
+import model.DAOEmpresa
+import model.DAOVaga
 import service.user.Empresa
 import service.vaga.Vaga
 import utils.view.ClearConsole
@@ -10,14 +12,14 @@ import utils.view.ClearConsole
 class ListVagas {
 
     Empresa empresa
-    Integer idEmpresa = new DAOEmpresa(DBConnection.getDBConnection()).getId(empresa)
+    Integer idEmpresa = ControllerEmpresa.getId(empresa)
 
     ListVagas(Empresa empresa) {
         this.empresa = empresa
     }
 
     void menu() {
-        List<Vaga> vagas = new ModelVaga(DBConnection.getDBConnection()).getAllVagasByEmpresa(idEmpresa)
+        List<Vaga> vagas = ControllerVaga.getVagasByEmpresa(idEmpresa)
         if(vagas.isEmpty()) {
             ClearConsole.clear()
             println "Não existem vagas cadastradas."

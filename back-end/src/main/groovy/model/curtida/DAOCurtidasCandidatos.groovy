@@ -1,18 +1,13 @@
-package model.modelCurtidas
+package model.curtida
 
 import groovy.sql.Sql
+import model.DBConnection
 import service.user.Candidato
 
-import java.sql.Connection
+class DAOCurtidasCandidatos {
+    Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
-class ModelCurtidasCandidatos {
-    Sql sql
-
-    ModelCurtidasCandidatos(Connection connection) {
-        this.sql = Sql.newInstance(connection)
-    }
-
-    void curtiVaga(Integer idVaga, Candidato candidato) {
+    void curtirVaga(Integer idVaga, Candidato candidato) {
         sql.execute('''
                                     INSERT INTO curtidas_candidatos (id_vaga, id_candidato) 
                                         VALUES (?, (SELECT id FROM candidatos WHERE email = ?))

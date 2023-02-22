@@ -21,7 +21,7 @@ class EmpresaView {
 
             switch (sc.nextLine()) {
                 case "1":
-                    new EditEmpresa(empresa).menu()
+                    new EditEmpresaView(empresa).menu()
                     break
                 case "2":
                     ClearConsole.clear()

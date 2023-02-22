@@ -1,7 +1,6 @@
 package view.register
 
 import controller.ControllerCandidato
-import model.competencia.DAOCompetenciaCandidato
 import utils.view.ClearConsole
 import utils.service.Regex
 import utils.view.Input

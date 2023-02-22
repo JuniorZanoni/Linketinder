@@ -1,6 +1,6 @@
 package view.register
 
-import controller.ConstrollerEmpresa
+import controller.ControllerEmpresa
 import utils.service.Regex
 import utils.view.Input
 
@@ -25,6 +25,6 @@ class RegisterEmpresaView {
                 password: password
         ]
 
-        new ConstrollerEmpresa().save(empresaBO)
+        new ControllerEmpresa().save(empresaBO)
     }
 }

@@ -1,16 +1,10 @@
-package model.modelCurtidas
+package model.curtida
 
 import groovy.sql.Sql
+import model.DBConnection
 
-import java.sql.Connection
-
-class ModelCurtidasVagas {
-
-    Sql sql
-
-    ModelCurtidasVagas(Connection connection) {
-        this.sql = Sql.newInstance(connection)
-    }
+class DAOCurtidasVagas {
+    Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
     boolean curtiCandidato(Integer idVaga, Integer idCandidato) {
         sql.execute('''

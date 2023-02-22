@@ -1,4 +1,4 @@
-package model.candidato
+package model
 
 import model.DBConnection
 import service.user.Candidato

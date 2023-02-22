@@ -2,16 +2,13 @@ package model.competencia
 
 import groovy.sql.Sql
 import model.DBConnection
-import service.competencia.Competencia
-
-import java.sql.Connection
 
 class DAOCompetenciaVaga implements IDAOCompetencia{
 
     Sql sql = Sql.newInstance(DBConnection.getDBConnection())
 
-    List<Competencia> getCompetencias(Integer idVaga) {
-        List competencias = []
+    List<Map> getCompetencias(Integer idVaga) {
+        List<Map> competencias = []
 
        sql.query('''SELECT id_competencia, competencia FROM vagas_competencias
                                         LEFT JOIN competencias ON competencias.id = vagas_competencias.id_competencia
@@ -19,15 +16,15 @@ class DAOCompetenciaVaga implements IDAOCompetencia{
             while (resultSet.next()) {
                 String id = resultSet.getInt('id_competencia').toString()
                 String competencia = resultSet.getString('competencia').toString()
-                competencias.add([id, competencia])
+                competencias.add("id": id, "name": competencia)
             }
         }
 
         return competencias
     }
 
-    List getCompetenciasNoHave(Integer idVaga) {
-        List competencias = []
+    List<Map> getCompetenciasNoHave(Integer idVaga) {
+        List<Map> competencias = []
 
        sql.query('''SELECT id, competencia FROM competencias
                                 LEFT JOIN (SELECT * FROM vagas_competencias WHERE id_vaga = ?) as vagas_competencias
@@ -36,7 +33,7 @@ class DAOCompetenciaVaga implements IDAOCompetencia{
             while (resultSet.next()) {
                 String id = resultSet.getInt('id').toString()
                 String competencia = resultSet.getString('competencia').toString()
-                competencias.add([id, competencia])
+                competencias.add("id": id, "name": competencia)
             }
         }
 
