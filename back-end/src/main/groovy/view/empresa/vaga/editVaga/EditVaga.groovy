@@ -2,7 +2,6 @@ package view.empresa.vaga.editVaga
 
 import controller.ControllerEmpresa
 import controller.ControllerVaga
-
 import service.user.Empresa
 import service.vaga.Vaga
 import utils.view.ClearConsole

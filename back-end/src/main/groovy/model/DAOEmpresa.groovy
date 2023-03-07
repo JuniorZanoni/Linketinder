@@ -1,8 +1,7 @@
 package model
 
-import model.DBConnection
-import service.user.Empresa
 import groovy.sql.Sql
+import service.user.Empresa
 
 class DAOEmpresa {
     Sql sql = Sql.newInstance(DBConnection.getDBConnection())

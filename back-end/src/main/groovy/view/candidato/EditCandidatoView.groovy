@@ -2,11 +2,11 @@ package view.candidato
 
 import controller.ControllerCandidato
 import service.user.Candidato
+import utils.service.ConvertStringInLocalDate
 import utils.service.Regex
 import utils.view.ClearConsole
 import utils.view.Input
 import view.MainMenu
-import utils.service.ConvertStringInLocalDate
 import view.competencia.CompetenciaView
 
 class EditCandidatoView {

@@ -1,8 +1,8 @@
 package model.competencia
 
+import groovy.sql.Sql
 import model.DBConnection
 import service.competencia.Competencia
-import groovy.sql.Sql
 
 class DAOCompetencia {
 

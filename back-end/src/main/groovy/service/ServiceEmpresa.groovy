@@ -1,9 +1,7 @@
 package service
 
-
 import model.DAOEmpresa
 import model.DAOMatch
-import model.DBConnection
 import service.user.Empresa
 
 class ServiceEmpresa {

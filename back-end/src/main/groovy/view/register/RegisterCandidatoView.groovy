@@ -1,8 +1,8 @@
 package view.register
 
 import controller.ControllerCandidato
-import utils.view.ClearConsole
 import utils.service.Regex
+import utils.view.ClearConsole
 import utils.view.Input
 import view.competencia.CompetenciaView
 

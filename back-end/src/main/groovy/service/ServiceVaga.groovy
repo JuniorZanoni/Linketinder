@@ -1,7 +1,6 @@
 package service
 
 import model.DAOVaga
-import model.DBConnection
 import service.user.Candidato
 import service.user.Empresa
 import service.vaga.Vaga
@@ -15,8 +14,10 @@ class ServiceVaga {
         return new DAOVaga().getVagasByEmpresa(idEmpresa)
     }
 
-    static Integer save(Vaga vaga, Integer idEmpresa) {
-        return new DAOVaga().save(vaga, idEmpresa)
+    static Integer save(Map<String, String> vagaBO) {
+        Vaga vaga = new Vaga(vagaBO.name, vagaBO.description, vagaBO.local)
+
+        return new DAOVaga().save(vaga, vagaBO.idEmpresa.toInteger())
     }
 
     static Integer getIdVaga(Vaga vaga, Integer idEmpresa) {

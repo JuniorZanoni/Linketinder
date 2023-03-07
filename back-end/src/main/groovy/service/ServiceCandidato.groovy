@@ -3,7 +3,6 @@ package service
 import model.DAOCandidato
 import service.user.Candidato
 import utils.service.ConvertStringInLocalDate
-
 import java.time.LocalDate
 
 class ServiceCandidato {

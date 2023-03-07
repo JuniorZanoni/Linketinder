@@ -1,7 +1,6 @@
 package service.competencia
 
 import model.competencia.DAOCompetencia
-import service.competencia.Competencia
 
 class ServiceCompetencia {
     static boolean save(String competenciaBO) {

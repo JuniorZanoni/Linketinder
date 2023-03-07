@@ -4,42 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9cacfbda-70fd-4411-a10f-315366762c15" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/groovy/controller/ControllerEmpresa.groovy" afterDir="false" />
+    <list default="true" id="dee6bb53-65a4-4f1a-aab1-c353f24e946a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/controller/ConstrollerEmpresa.groovy" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/back-end.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/controller/ControllerCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/controller/ControllerCandidato.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/controller/ControllerCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/controller/ControllerCompetencia.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/ModelMatch.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOMatch.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/ModelVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOVaga.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/candidato/DAOCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/controller/ControllerVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/controller/ControllerVaga.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/DAOCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOCandidato.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/DAOEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOEmpresa.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/DBConnection.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DBConnection.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetencia.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetenciaCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetenciaCandidato.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetenciaVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/competencia/DAOCompetenciaVaga.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/empresa/DAOEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/DAOEmpresa.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCurtidas/ModelCurtidasCandidatos.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/curtida/DAOCurtidasCandidatos.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/model/modelCurtidas/ModelCurtidasVagas.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/model/curtida/DAOCurtidasVagas.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceCandidato.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceCompetenciaCandidato.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceEmpresa.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceLogin.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceLogin.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/testess.groovy" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/candidato/CandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/candidato/CandidatoView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/candidato/EditCandidato.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/candidato/EditCandidatoView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/AddCompetenciaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/AddCompetenciaView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/ListCompetenciasView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/ListCompetenciasView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/competencia/RemoveCompetenciaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/competencia/RemoveCompetenciaView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirCandidatoView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirVagaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/curtir/CurtirVagaView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/EditEmpresa.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/EditEmpresaView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/EmpresaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/EmpresaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/ServiceVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/ServiceVaga.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/service/competencia/ServiceCompetencia.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/service/competencia/ServiceCompetencia.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/candidato/EditCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/candidato/EditCandidatoView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/CreateVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/CreateVaga.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/ListVagas.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/ListVagas.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVaga.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVaga.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVagaOptions.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/empresa/vaga/editVaga/EditVagaOptions.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesCandidatoView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesVagaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/matches/MatchesVagaView.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterCandidatoView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterCandidatoView.groovy" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterEmpresaView.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/groovy/view/register/RegisterEmpresaView.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/ConvertStringInLocalDateTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/ConvertStringInLocalDateTest.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/groovy/RegexTest.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/groovy/RegexTest.groovy" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,51 +46,53 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2LyjMeUaLzUY0gTaFzSNRPc6pnk" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="workspaceImportEnabled" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
+  <component name="ProjectId" id="2Mevve1PBsPxbPEZoriUsvFwmxj" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/zanoni/acelera-zg/projects/Linketinder/back-end&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;Errors&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/zanoni/acelera/projects/Linketinder/back-end",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="service" />
-      <recent name="model" />
-      <recent name="View.Utils" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib" />
+      <recent name="$PROJECT_DIR$/src/test/groovy" />
+      <recent name="$PROJECT_DIR$/src/main/groovy" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainMenu">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.871">
     <configuration name="MainMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="view.MainMenu" />
       <module name="back-end.main" />
@@ -109,119 +106,119 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CompetenciaTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;CompetenciaTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="ConvertStringInLocalDateTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;ConvertStringInLocalDateTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="RegexTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;RegexTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="aaa" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="back-end.main" />
-      <setting name="path" value="file://$PROJECT_DIR$/src/main/groovy/aaa.groovy" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$/src/main/groovy" />
-      <setting name="debug" value="false" />
+    <configuration name="Tomcat 8.5.871" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.5.871" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="OPEN_IN_BROWSER" value="false" />
+      <option name="UPDATING_POLICY" value="hot-swap-classes" />
+      <deployment>
+        <artifact name="Gradle : com.example : back-end-1.0-SNAPSHOT.war">
+          <settings>
+            <option name="CONTEXT_PATH" value="" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="6aa57977-8b59-4c7f-9031-0dc6b233bf82" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="35291" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
       <method v="2">
         <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="Gradle : com.example : back-end-1.0-SNAPSHOT.war" />
+        </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.MainMenu" />
+      <item itemvalue="Tomcat Server.Tomcat 8.5.871" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Groovy.aaa" />
         <item itemvalue="Application.MainMenu" />
-        <item itemvalue="Gradle.RegexTest" />
-        <item itemvalue="Gradle.ConvertStringInLocalDateTest" />
-        <item itemvalue="Gradle.CompetenciaTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="9cacfbda-70fd-4411-a10f-315366762c15" name="Changes" comment="" />
-      <created>1676850170112</created>
+      <changelist id="dee6bb53-65a4-4f1a-aab1-c353f24e946a" name="Changes" comment="" />
+      <created>1678141096096</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676850170112</updated>
-      <workItem from="1676850171219" duration="2748000" />
-      <workItem from="1676881292389" duration="17740000" />
-      <workItem from="1676908724373" duration="27067000" />
-      <workItem from="1676979224821" duration="763000" />
-      <workItem from="1676985506576" duration="1922000" />
-      <workItem from="1676987482464" duration="5969000" />
-      <workItem from="1677059488707" duration="25709000" />
+      <updated>1678141096096</updated>
+      <workItem from="1678141097606" duration="5237000" />
+      <workItem from="1678185408525" duration="893000" />
+      <workItem from="1678186349993" duration="52000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

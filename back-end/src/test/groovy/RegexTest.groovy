@@ -1,6 +1,6 @@
-import utils.service.Regex
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import utils.service.Regex
 
 class RegexTest {
 

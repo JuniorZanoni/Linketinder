@@ -26,7 +26,7 @@ class CreateVaga {
         Vaga vaga = new Vaga(name, description, local)
 
         ClearConsole.clear()
-        Integer idVaga = ControllerVaga.save(vaga, idEmpresa)
-        CompetenciaView.menu(idVaga, "vaga")
+//        Integer idVaga = ControllerVaga.save(vaga, idEmpresa)
+//        CompetenciaView.menu(idVaga, "vaga")
     }
 }

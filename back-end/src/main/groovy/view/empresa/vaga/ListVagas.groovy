@@ -2,9 +2,6 @@ package view.empresa.vaga
 
 import controller.ControllerEmpresa
 import controller.ControllerVaga
-import model.DBConnection
-import model.DAOEmpresa
-import model.DAOVaga
 import service.user.Empresa
 import service.vaga.Vaga
 import utils.view.ClearConsole

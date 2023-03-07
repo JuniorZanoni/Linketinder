@@ -2,7 +2,6 @@ package model.competencia
 
 import groovy.sql.Sql
 import model.DBConnection
-import service.competencia.Competencia
 
 class DAOCompetenciaCandidato implements IDAOCompetencia {
 

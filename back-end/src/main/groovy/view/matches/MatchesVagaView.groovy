@@ -3,9 +3,6 @@ package view.matches
 import controller.ControllerEmpresa
 import controller.ControllerMatch
 import controller.ControllerVaga
-import model.DBConnection
-import model.DAOMatch
-import model.DAOVaga
 import service.user.Empresa
 import utils.view.ClearConsole
 
